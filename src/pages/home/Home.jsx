@@ -3,6 +3,18 @@ import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 import SideNav from '../../components/SideNav/SideNav'
 import './Home.css'
+import {
+  LineChart,
+  ResponsiveContainer,
+  Legend,
+  Tooltip,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid
+} from 'recharts'
+
+
 
 // Material Ui 
 import { experimentalStyled as styled } from '@mui/material/styles';
@@ -23,6 +35,80 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Home = () => {
+  // Sample chart data
+  const pdata = [
+    {
+      name: '1 day',
+      users: 5,
+      org: 0
+    },
+    {
+      name: '5 day',
+      users: 11,
+      org: 0
+    },
+    {
+      name: '10 day',
+      users: 15,
+      org: 3
+    },
+    {
+      name: '15 day',
+      users: 26,
+      org: 5
+    },
+    {
+      name: '20 day',
+      users: 43,
+      org: 7
+    },
+    {
+      name: '25 day',
+      users: 67,
+      org: 7
+    },
+    {
+      name: '30 day',
+      users: 87,
+      org: 12
+    },
+    {
+      name: '35 day',
+      users: 98,
+      org: 15
+    },
+    {
+      name: '40 day',
+      users: 98,
+      org: 16
+    },
+    {
+      name: '45 day',
+      users: 98,
+      org: 16
+    },
+
+    {
+      name: '50 day',
+      users: 101,
+      org: 14
+    },
+    {
+      name: '55 day',
+      users: 129,
+      org: 13
+    },
+    {
+      name: '60 day',
+      users:158,
+      org: 15
+    },
+    {
+      name: '65 day',
+      users: 202,
+      org: 22
+    },
+  ];
   return (
     <>
       <div className="admin_home_container">
@@ -81,11 +167,26 @@ const Home = () => {
 
                 </Grid>
               </Box>
+              {/* chart helper :-https://www.geeksforgeeks.org/create-a-line-chart-using-recharts-in-reactjs/ */}
+              <div style={{marginTop:'3rem'}} className='chart section'>
+                <h1 className='admin_chart_title'> <span className='admin_chart_span'>|</span> Real Time Data</h1>
+                <ResponsiveContainer width="100%" aspect={2}>
+                  <LineChart data={pdata} margin={{ right: 50 }}>
+                    <CartesianGrid />
+                    <XAxis dataKey="name"
+                      interval={'preserveEnd'} />
+                    <YAxis></YAxis>
+                    <Legend />
+                    <Tooltip />
+                    <Line dataKey="users"
+                      stroke="black" activeDot={{ r: 8 }} />
+                    <Line dataKey="org"
+                      stroke="red" activeDot={{ r: 8 }} />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
             </Container>
-           <div className='chart section'>
 
-
-           </div>
           </div>
         </div>
         <Footer />

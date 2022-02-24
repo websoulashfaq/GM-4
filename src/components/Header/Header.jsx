@@ -20,6 +20,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
 import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
+import gm4logo from '../../assets/images/logo.png';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -246,7 +247,7 @@ const Header = () => {
               component="div"
               sx={{ display: { sm: 'block' } }}
             >
-              <h2 onClick={() => navigate('/')} className='headerlogoorg'>GM4</h2>
+              <h2 onClick={() => navigate('/')} className='headerlogoorg'> <img  src={gm4logo} alt=""/> </h2>
             </Typography>
             <Search id="header-searchbarorg">
               <SearchIconWrapper>

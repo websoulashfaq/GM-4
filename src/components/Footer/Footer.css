@@ -133,6 +133,11 @@
     width: 100%;
   }
 }
+@media (max-width: 899px) {
+  .footer_row_1 {
+    margin-top: 50px;
+  }
+}
 @media (max-width: 600px) {
   .footer_innersub_row_1 {
     display: block;

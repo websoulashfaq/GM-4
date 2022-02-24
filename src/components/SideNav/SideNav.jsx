@@ -23,12 +23,12 @@ const SideNav = () => {
                 </div>
                 <div className='button_nav'>
                     <Link className="buttons_link" to='/admin/request/paidlist'>
-                        Request Lists
+                        Request List
                     </Link><br />
                 </div>
                 <div className='button_nav'>
                     <Link className="buttons_link" to='/admin/allowed/paidlist'>
-                        Approved Lists
+                        Approved List
                     </Link><br />
                 </div>
                 <div className='button_nav'>

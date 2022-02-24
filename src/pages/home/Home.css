@@ -44,18 +44,35 @@ body {
 .admin_home_link {
   font-size: 11px;
   color: #39caf1;
-
 }
 .admin_home_link:hover {
   text-decoration: underline;
   color: #6bdcfc;
-
 }
 .admin_home_card_icon {
   padding: 0 10px 0 0;
   font-size: 30px;
   color: #1789a8a0;
 }
+/* ine chart Real time data  */
+.admin_chart_title {
+  color: rgba(255, 255, 255, 0.879);
+  width: 100%;
+  height: 4rem;
+  background-color: #39caf1;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  margin-bottom: 30px;
+}
+.admin_chart_span{
+  color: rgb(255, 255, 255);
+  font-weight: 800;
+  font-size: 30px;
+  margin-right: 5px;
+}
+
 
 @media (max-width: 1100px) {
   .admin_home_main {
