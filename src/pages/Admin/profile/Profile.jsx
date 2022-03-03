@@ -1,7 +1,7 @@
 import React from 'react'
 import './Profile.css'
 import {Link} from 'react-router-dom'
-import adminprofilepic from './../../../assets/images/adminprofilepic.jpg';
+import adminprofilepic from './../../../assets/images/Admin-profile/adminprofilepic.jpg';
 import EmailIcon from '@mui/icons-material/Email';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { Grid } from '@mui/material';
