@@ -1,0 +1,172 @@
+.BookedTournamentsTable {
+  margin: 1em 0;
+  width: 100%;
+  overflow: hidden;
+  background: #FFF;
+  color: #024457;
+  border-radius: 10px;
+  border: 1px solid #167F92;
+}
+
+.BookedTournamentsTable tr {
+  border: 1px solid #D9E4E6;
+}
+
+.BookedTournamentsTable tr:nth-child(odd) {
+  background-color: #EAF3F3;
+}
+
+.BookedTournamentsTable th {
+  display: none;
+  border: 1px solid #FFF;
+  background-color: #6BDCFC;
+  color: #FFF;
+  padding: 1em;
+}
+
+.BookedTournamentsTable th:first-child {
+  display: table-cell;
+  text-align: center;
+}
+
+.BookedTournamentsTable th:nth-child(2) {
+  display: table-cell;
+}
+
+.BookedTournamentsTable th:nth-child(2) span {
+  display: none;
+}
+
+.BookedTournamentsTable th:nth-child(2):after {
+  content: attr(data-th);
+}
+
+@media (min-width: 480px) {
+  .BookedTournamentsTable th:nth-child(2) span {
+    display: block;
+  }
+
+  .BookedTournamentsTable th:nth-child(2):after {
+    display: none;
+  }
+}
+
+.BookedTournamentsTable td {
+  display: block;
+  word-wrap: break-word;
+  max-width: 7em;
+}
+
+.BookedTournamentsTable td:first-child {
+  display: table-cell;
+  text-align: center;
+  border-right: 1px solid #D9E4E6;
+}
+
+.BookedTournamentsTable th, .BookedTournamentsTable td {
+  text-align: left;
+  margin: .5em 1em;
+}
+
+@media screen and (min-width:480px) {
+  .BookedTournamentsTable th, .BookedTournamentsTable td {
+    display: table-cell;
+    padding: 1em;
+  }
+
+  .BookedTournamentsTable td {
+    border: 1px solid #D9E4E6;
+  }
+
+}
+
+
+.tournamentList-booked_tournament {
+  padding: 20px;
+}
+
+/* header */
+.tournamentList_header h1 {
+  text-align: left;
+  font-size: 52px;
+  font-weight: 700;
+  color: #ffff;
+  text-transform: uppercase;
+  left: -19px;
+  top: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 3px;
+}
+
+.tournamentList_header h1:before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 4rem;
+  background-color: #ffff;
+  left: -19px;
+  top: 9px;
+  opacity: 0.5;
+}
+
+.tournamentList_header {
+  width: 100%;
+  height: 7rem;
+  background-color: #6BDCFC;
+  margin-bottom: 2rem;
+  padding-left: 6rem;
+  position: relative;
+}
+
+@media (max-width:600px) {
+  .tournamentList_header h1 {
+    font-size: 19px;
+    top: 25px;
+    left: -44px;
+  }
+
+  .tournamentList_header h1:before {
+    height: 3rem;
+    top: -1px;
+  }
+
+  .tournamentList_header {
+    height: 6rem;
+  }
+
+}
+
+@media (min-width:593px) and (max-width:639px) {
+  .tournamentList_header h1 {
+    font-size: 41px;
+    top: 15px;
+  }
+
+  .tournamentList_header h1:before {
+    top: 3px;
+  }
+
+}
+
+@media (min-width:398px) and (max-width:600px) {
+  .tournamentList_header h1 {
+    top: 27px;
+  }
+
+  .tournamentList_header h1:before {
+    height: 3rem;
+    top: -4px;
+  }
+
+  .tournamentList_header h1 {
+    left: -36px;
+  }
+}
+
+@media (min-width:639px) and (max-width:716px) {
+  .tournamentList_header h1 {
+    font-size: 45px;
+  }
+}
