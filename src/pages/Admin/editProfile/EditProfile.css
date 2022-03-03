@@ -1,0 +1,222 @@
+.admin-profile-header{
+    background-color: #6bdcfc;
+    height: 8rem;
+  
+    padding-left: 6rem;
+    display: flex;
+   
+}
+.admin-profile-header h2{
+  
+    color:#ffff;
+    text-align: left;
+    font-size: 35px;
+    font-weight: 700;
+    margin-top: 30px;
+    text-transform: uppercase;
+    padding-top: 30px;
+    
+}
+.admin-profile-header h2::before{
+  
+  content: "";
+  position: absolute;
+  width: 6px;
+  height:4rem;
+  background-color: #ffff;
+  left: 64px;
+  top:52px;
+  opacity: 0.5;
+  margin-top: 25px;
+    
+}
+.admin-editprofile-head{
+    text-align: left;
+}
+.admin-editprofile{
+   
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+body{
+    margin:auto;
+    font-family:open sans;
+    max-width: 100%;
+  
+}
+.AdminEditprofile-Form{
+    margin-left: 25%;
+    border: 1px solid #6bdcfc;
+    padding: 20px;
+    width:50%;
+    border-radius: 5px;
+    margin-top: 10%;
+    background-color: #ffff;
+}
+
+.uk-input{
+    border-radius: 5px !important;
+}
+.uk-input:hover{
+    border: 1px solid #6bdcfc;
+}
+.uk-input:focus{
+    border: 1px solid #6bdcfc !important;
+}
+.AdminEditprofile-Form button{
+    background-color: #6bdcfc;
+    font-size: 20px;
+    padding-left: 10.5%;
+    padding-right: 10.5%;
+    padding-top:10px;
+    padding-bottom: 10px;
+    margin-left: -4.5px;
+    margin-right: 5%;
+    margin-top: 8px;
+    border: 1px solid #6bdcfc;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+}
+.editptofile-avatar{
+    width: 80px;
+    height: 80px;
+}
+.editproficon{
+    width: 20px;
+    height: 20px;
+}
+
+.adminep-modal_box{
+    object-fit: cover;
+    
+}
+.AdminEditprofile-Form button:hover{
+    background-color: #6bdcfc;
+
+}
+
+.adminep-button_area{
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    width: 80%;
+    margin-right: auto;
+}
+.adminep-button_area button{
+    width: 30%;
+    cursor: pointer;
+    position: absolute;
+    height: 40px;
+    margin-left: 180px;
+   
+    cursor: pointer;
+    background-color: #6bdcfc;
+    color: #ffff;
+    border: 1px solid #6bdcfc;
+    border-radius: 5px;
+}
+   
+#adminep-modal-description{
+    display: flex;
+    flex-direction: column;
+    margin-top: -2rem;
+}
+
+.adminep-modal_box{
+    border: none !important;
+    
+}
+
+@media (max-width:640px) {
+    .adminep-modal_box{
+        width: 17rem !important;
+        
+      
+    }
+   
+    .adminep-modal_box p{
+        height: 23rem !important;
+        
+    }
+    .adminep-button_area{
+        width: 100% !important;
+        
+
+    }
+    .adminep-button_area button{
+        margin-left: 128px;
+        margin-top: -2rem;
+       
+    }
+}
+
+@media (max-width:480px) {
+    .adminep-modal_box{
+        width: 17rem !important;
+    }
+    .adminep-modal_box p{
+        height: 23rem !important;
+        margin-top: -2rem;
+    }
+    .adminep-button_area{
+        width: 100% !important;
+        
+    }
+    .adminep-modal_close{
+        margin-right: 20px;
+    }
+    .adminep-button_area button{
+        margin-left: 130px;
+        margin-top: -2rem;
+    }
+    
+}
+@media (max-width:269px)  {
+    .adminep-modal_box{
+        width: 8rem !important;
+        
+    }
+    .adminep-modal_box p{
+        height: 14rem !important;
+    }
+  .adminep-button_area{
+        width: 100% !important;
+        
+    }
+   
+    .adminep-button_area button{
+        margin-left: 130px;
+        margin-top: -5rem;
+    }
+    
+}
+  
+@media(min-width:501px) and (max-width:640px){
+    .AdminEditprofile-Form{
+      width:450px;
+      margin-left: 50px;
+     
+    }
+ }
+ @media(min-width:401px) and (max-width:500px){
+    .AdminEditprofile-Form{
+      width:350px;
+      margin-left: 35px;
+     
+    }
+ }
+ @media(min-width:331px) and (max-width:400px){
+    .AdminEditprofile-Form{
+       width: 300px;
+       margin-left: 40px;
+    }
+ }
+
+ 
+ @media(min-width:300px) and (max-width:331px){
+    .AdminEditprofile-Form{
+       width: 250px;
+       margin-left: 32px;
+    }
+ }
