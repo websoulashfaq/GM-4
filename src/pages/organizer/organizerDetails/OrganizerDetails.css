@@ -1,0 +1,118 @@
+.orgDetails{
+    height: auto;
+    /* border: 1px solid #6BDCFC; */
+    border-right: 5px solid #6BDCFC;
+    border-bottom: 5px solid #6BDCFC;
+    border-radius: 10px;
+    box-shadow: rgb(17 17 26 / 10%) 0px 1px 0px, rgb(17 17 26 / 10%) 0px 8px 24px, rgb(17 17 26 / 10%) 0px 16px 48px;
+    display: flex;
+    padding: 2rem 0 1rem;
+}
+.singelCard{
+    margin-top: 8rem;
+}
+.orgImgeDetails{
+    height: auto;
+    /* border-right: 1px solid; */
+}
+.org_img img{
+    border-radius: 10px;
+    height: 19.5rem;
+    object-fit: cover;
+    margin-top: 1rem;
+}
+
+.org_img{
+    /* padding: 25px; */
+    display: flex;
+    justify-content: center;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.org_buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-top: 5rem;
+
+}
+.org_buttons button{
+    height: 3rem;
+    margin-bottom: 1rem;
+    background-color: #6BDCFC;
+    color: #ffff;
+    border: none;
+    border-radius: 4px;
+   
+}
+.org_descripion{
+    height: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+.org_descripion h1{
+    margin-top: 1rem;
+    padding-left: 1rem;
+    font-size: 4rem;
+}
+.org_descripion hr{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+}
+.location{
+    display: flex;
+    align-items:end;
+    padding-left: 1rem;
+}
+.admin_user_infos h6{
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 1rem;
+    margin: 0;
+}
+.admin_user_infos  span{
+    display: flex;
+
+}
+.org_descripion table{
+    margin-top: 0;
+}
+
+.org-name-andButton{
+    display: flex;
+}
+
+.uk-table td{
+    font-weight: 800;
+}
+
+@media (max-width:600px) {
+    .orgDetails{
+        flex-direction: column !important;
+    }
+    .org_descripion h1{
+        font-size: 3rem;
+    }
+}
+
+/* modal style */
+.modal_buttons{
+    display: flex;
+    justify-content: end;
+    margin-top: 2rem;
+}
+.modal_buttons button{
+    width: 7rem;
+    height: 2.5rem;
+    background-color: #21ba45;
+    border: none;
+    color: #ffff;
+}
+.modalNo{
+    background-color: #F32013 !important;
+    margin-right: 5px;
+}
