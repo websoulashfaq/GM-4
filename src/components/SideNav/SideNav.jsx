@@ -7,6 +7,7 @@ const SideNav = () => {
         <div>
             <div className='sidenav'>
                 <div className='button_nav'>
+                    {/* side lists start */}
                     <Link className="buttons_link" to='/'>
                         Home
                     </Link><br />
@@ -37,10 +38,11 @@ const SideNav = () => {
                     </Link><br />
                 </div>
                 <div className='button_nav'>
-                    <a className="buttons_link" href="/admin/profile">
+                    <Link to='/admin/profile' className='buttons_link'>
                         Profile
-                    </a><br />
+                    </Link>
                 </div>
+                {/* side lists end */}
             </div>
 
         </div>

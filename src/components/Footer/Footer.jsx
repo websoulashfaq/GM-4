@@ -23,12 +23,14 @@ const Footer = () => {
                 <h4>IMPORTANT LINKS</h4>
               </div>
               <div className='footer_innerdiv-important-links_links'>
+                {/* Footer list one start*/}
                 <ul>
-                  <li><Link className='admin_footer_link' to="/admin/request/paidlist">Request paid list</Link></li>
-                  <li><Link className='admin_footer_link' to="/admin/allowed/paidlist">Approved paid list </Link></li>
-                  <li><Link className='admin_footer_link' to="/admin/userslist">Users</Link></li>
-                  <li><Link className='admin_footer_link' to="/admin/organizer">Organizers</Link></li>
+                  <li><Link className='admin_footer_link' style={{ textDecoration: 'none' }} to="/admin/request/paidlist">Request paid list</Link></li>
+                  <li><Link className='admin_footer_link' style={{ textDecoration: 'none' }} to="/admin/allowed/paidlist">Approved paid list </Link></li>
+                  <li><Link className='admin_footer_link' style={{ textDecoration: 'none' }} to="/admin/userslist">Users</Link></li>
+                  <li><Link className='admin_footer_link' style={{ textDecoration: 'none' }} to="/admin/organizer">Organizers</Link></li>
                 </ul>
+                {/* Footer list one ends*/}
               </div>
             </div>
           </div>
@@ -38,27 +40,30 @@ const Footer = () => {
                 <h4>HELP CENTER</h4>
               </div>
               <div className='footer_innerdiv-useful-links_links'>
+                {/* Footer list two start*/}
                 <ul>
-                  <li><Link className='admin_footer_link' to="k">FAQ</Link></li>
-                  <li><a className='admin_footer_link' href="https://www.speedtest.net/">Speed Test</a></li>
-                  <li><Link className='admin_footer_link' to="k">Privacy</Link></li>
-                  <li><Link className='admin_footer_link' to="k">Corporate Information</Link></li>
+                  <li><Link className='admin_footer_link' style={{ textDecoration: 'none' }} to="k">FAQ</Link></li>
+                  <li><Link className='admin_footer_link' style={{ textDecoration: 'none' }} to="k">Privacy</Link></li>
+                  <li><Link className='admin_footer_link' style={{ textDecoration: 'none' }} to="k">Corporate Information</Link></li>
                 </ul>
+                {/* Footer list two ends*/}
               </div>
             </div>
             <div className='footer_innerdiv-contact-us footer_innerdiv'>
               <div className='footer_innerdiv-contact-us-heading'>
+                {/* Footer list three start*/}
                 <h4>CONTACT US</h4>
                 <p>Banglore,</p>
                 <p>India,</p>
                 <p>Ph:79472</p>
                 <p>Email:superadmin@gmail.com</p>
+                {/* Footer list three ends*/}
                 <div className='footer_icons'>
-                  <Link to="kkk" uk-icon="icon: facebook"></Link>
-                  <Link to="kkk" uk-icon="icon: twitter"></Link>
-                  <Link to="kkk" uk-icon="icon: instagram"></Link>
-                  <Link to="kkk" uk-icon="icon: linkedin"></Link>
-                  <Link to="kkk" uk-icon="icon: youtube"></Link>
+                  <a href="#"><div uk-icon="icon: facebook"></div></a>
+                  <a href="#"><div uk-icon="icon: twitter"></div></a>
+                  <a href="#"><div uk-icon="icon: instagram"></div></a>
+                  <a href="#"><div uk-icon="icon: linkedin"></div></a>
+                  <a href="#"><div uk-icon="icon: youtube"></div></a>
                 </div>
               </div>
             </div>

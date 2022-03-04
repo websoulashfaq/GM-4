@@ -113,6 +113,9 @@
 .footer_icons a {
   color: #6bdcfc;
 }
+.footer_icons a :hover{
+  color: #6bdcfc;
+}
 .footer_copyright {
   height: 2.5rem;
   width: 90%;
