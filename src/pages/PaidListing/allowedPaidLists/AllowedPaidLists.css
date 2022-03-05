@@ -1,0 +1,93 @@
+.allowedPaidlist_main-wrapper{
+    width: 100%;
+    margin: 0 auto;
+}
+.allowedPaidlist_headding{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 8rem;
+    background-color: #87CEEB;
+    margin: 0 auto;
+    min-width: 348px !important;
+    margin-top: 1rem !important;
+}
+.allowedPaidlist_headding h1{
+    color: #ffff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: left;
+    margin-left: 1rem;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.allowedPaidlist_emptyheadingdiv{
+    width: 6px;
+    height: 3rem;
+    background-color: white;
+    opacity: 0.5;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+.allowedPaidlist_container{
+    width: 95% !important;
+    margin: 2rem auto;
+}
+.allowedPaidlist_container th{
+    font-size: 1.5rem !important;
+}
+.allowedPaidlist_container button{
+    background-color: #6bdcfc;
+    color: #ffff;
+    border: none;
+    height: 2.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+}
+.allowedPaidlist_container td{
+    font-size: 1.1rem;
+    color: #4d4d4d;
+    font-weight: 600 !important;
+}
+@media  (min-width:1439px){
+    .allowedPaidlist_container th{
+        font-size: 2.5rem !important;
+    }
+    .allowedPaidlist_container button{
+        background-color: #6bdcfc;
+        color: #ffff;
+        border: none;
+        height: 3.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 150px;
+    }
+    .allowedPaidlist_container td{
+        font-size: 2rem;
+        color: #4d4d4d;
+        font-weight: 600 !important;
+    }
+}
+@media  (max-width:600px){
+    .allowedPaidlist_container th{
+        font-size: 1rem !important;
+    }
+    .allowedPaidlist_container button{
+        background-color: #6bdcfc;
+        color: #ffff;
+        border: none;
+        height: 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 60%;
+    }
+    .allowedPaidlist_container td{
+        font-size: 0.8rem;
+        color: #4d4d4d;
+        font-weight: 600 !important;
+    }
+    .allowedPaidlist_headding h1{
+        font-size: 1.5rem;
+    }
+}

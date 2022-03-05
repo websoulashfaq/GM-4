@@ -15,19 +15,21 @@ import Profile from '../pages/Admin/profile/Profile'
 import UserDetails from '../pages/User/userDetails/UserDetails'
 import UsersList from '../pages/User/usersList/Users'
 import UserTournaments from '../pages/User/userTournaments/UserTournaments'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
 import RequestDetails from '../pages/PaidListing/requestDetails/RequestDetails'
 import EditProfile from '../pages/Admin/editProfile/EditProfile'
 import ResetPage from '../authentication/forgotPassword/ResetPage'
+import Header from '../components/Header/Header'
+import Footer from '../components/Footer/Footer'
 
 const navigate = () => {
     return (
         <div>
+           
             <Router>
-                <div>
-                    <Header />
-                </div>
+
+            <div>
+                <Header/>
+            </div>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/admin/allowed/paidlist' element={<AllowedPaidList />} />
@@ -48,7 +50,7 @@ const navigate = () => {
                     <Route path='/admin/edit/profile' element={<EditProfile />} />
                 </Routes>
                 <div>
-                    <Footer />
+                    <Footer/>
                 </div>
             </Router>
         </div>
