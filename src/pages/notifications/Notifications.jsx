@@ -4,6 +4,7 @@ import img1 from '../../assets/images/notification/zYxDCQT.jpg'
 import img2 from '../../assets/images/notification/w4Mp4ny.jpg'
 import img3 from  '../../assets/images/notification/CtAQDCP.jpg'
 
+
 const Notifications = () => {
   return (
     <div className='notification-bg'>
