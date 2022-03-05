@@ -1,0 +1,49 @@
+.sidenav {
+  margin-top: 30px;
+  width: 300px;
+  height: 780px;
+}
+
+.button_nav {
+  border: 1px solid #6bdcfc;
+  margin: 0 0 20px 20px;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+}
+
+.buttons_link {
+  color: #6bdcfc;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+  letter-spacing: 1px;
+}
+.button_nav .buttons_link:hover {
+  color: #62c6e2;
+}
+
+@media (max-width: 1000px) {
+  .sidenav {
+    margin-left:0px;
+    width: 250px;
+  }
+  .button_nav {
+    width: 85%;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 899px) {
+  .sidenav {
+    display: none;
+  }
+}
+
+
