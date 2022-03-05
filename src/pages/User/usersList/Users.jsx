@@ -23,8 +23,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Users = () => {
   return (
-    <div>Users
-      <Link to="/admin/userdetails">more</Link>
+    <div>
 
       {/* userHeader */}
       <div className='userList_header'>

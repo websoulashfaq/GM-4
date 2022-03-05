@@ -1,0 +1,377 @@
+
+.admin-profile-header{
+    background-color: #6bdcfc;
+    height: 8rem;
+    padding-left: 6rem;
+    display: flex;
+   
+}
+.admin-profile-header h1{
+  
+    color:#ffff;
+    text-align: left;
+    font-size: 52px;
+    font-weight: 700;
+    margin-top: 20px;
+    text-transform: uppercase;
+    padding-top: 23px;
+    margin-left: 22px;
+    
+    
+}
+.admin-profile-header h1::before{
+  
+  content: "";
+  position: absolute;
+  width: 6px;
+  height:4rem;
+  background-color: #ffff;
+  left: 64px;
+  top:52px;
+  opacity: 0.5;
+  margin-top: 28px;
+ 
+    
+}
+.Adminprofile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    padding: 10%; 
+             
+}
+
+.Adminprofilepic {
+    width: 350px;
+    height: 390px;
+    border-right: 0;
+    text-align: right;
+    color: white;
+    border-radius: 10px;
+    justify-content: center;
+    object-fit: cover;
+    z-index: 1;
+    border: 0.5px solid grey;
+   
+    
+}
+.Adminprofilepic img{
+    margin-right: 12px;
+    width: 410px;
+    object-fit: cover;
+    height: 390px;
+   
+ 
+}
+
+.Adminprofiledata {
+    width: 300px;
+    margin-top: 12px;
+    height:365px;
+    padding-top: 50px;
+    margin-left: -2rem;
+    border-radius: 5px;
+    justify-content: center;
+     border: 1px solid rgba(128, 128, 128, 0.411);
+    
+}
+.Adminprofiledata p{
+    text-align: justify;
+    margin-left: 100px;
+    margin-top: -0.5rem;
+   
+    
+    
+}
+.Adminprofiledata h2{
+     margin-top: -2rem;
+   
+}
+
+.Admin-editprofileButton{
+    background-color: #6bdcfc;
+    margin-top: 6px;
+    border: 0.2px solid lightgray;
+    color: white;
+    border-radius: 5px;
+    width: 70%;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+.admin-profile{
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+@media only screen and (min-device-width: 678px) and (max-device-width : 793px){
+    
+    
+    .Adminprofile {
+        margin:10px 0 0  50px;
+        
+        
+    }
+}
+
+@media only screen and (min-device-width: 793px) and (max-device-width : 836px){
+    
+    
+    .Adminprofile {
+        margin:10px 0 0  70px;
+        
+        
+    }
+}
+@media only screen and (min-device-width: 836px) and (max-device-width : 960px){
+    
+    
+    .Adminprofile {
+        margin:10px 0 0  120px;
+        
+        
+    }
+}
+
+@media only screen and (min-device-width: 960px) and (max-device-width : 1100px){
+    
+    
+    .Adminprofile {
+        margin:10px 0 0 90px;
+        
+        
+    }
+}
+@media only screen and (min-device-width: 1100px) and (max-device-width : 1300px){
+    
+    
+    .Adminprofile {
+        margin:10px 0 0 50px;
+        
+        
+    }
+}
+@media only screen and (min-device-width: 1300px) and (max-device-width : 1500px){
+    
+    
+    .Adminprofile {
+        margin:10px 0 0 50px;
+        
+        
+    }
+}
+@media only screen and (min-device-width: 1500px) and (max-device-width : 1700px){
+    
+    
+    .Adminprofile {
+        margin:10px 0 0 100px;
+        
+        
+    }
+}
+@media only screen and (min-device-width: 1700px) and (max-device-width : 2000px){
+    
+    
+    .Adminprofile {
+        margin:10px 0 0 150px;
+        
+        
+    }
+}
+
+@media only screen and (min-device-width: 2000px) and (max-device-width : 2500px){
+    
+    
+    .Adminprofile {
+        margin:10px 0 0 200px;
+        
+        
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width:780px) {
+
+    
+    .Adminprofiledata h2{
+        padding-left: 10px;
+       
+       
+       
+    }
+    .Adminprofiledata p{
+        text-align: justify;
+        margin-left: 80px;
+    }
+
+}
+
+
+@media only screen and (min-width:300px) and (max-width:600px) {
+
+    
+    .Adminprofiledata h2{
+        padding-left: 5px;
+       
+       
+       
+    }
+    .Adminprofiledata p{
+        text-align: justify;
+        margin-left: 60px;
+    }
+
+}
+
+@media (max-width:535px) {
+    .Adminprofilepic {
+        width: 450px;
+        height: 390px;
+      }
+    .Adminprofiledata {
+        width: 400px;
+        height:365px;
+  
+
+    }
+}
+@media(min-width:641px) and (max-width:990px){
+    .admin-profile-header h1{
+       font-size: 45px; 
+       font-weight: 700;
+       margin-top: 30px;
+       margin-left: -5px;
+    }
+ }
+ @media(min-width:641px) and (max-width:990px){
+    .admin-profile-header h1::before{
+      margin-left: -15px;
+      height: 3.5rem;
+    }
+ }
+
+@media(min-width:369px) and (max-width:640px){
+    .admin-profile-header h1{
+       font-size: 35px; 
+       font-weight: 700;
+       margin-top: 50px;
+       margin-left: -20px;
+       padding-top: 35px;
+    }
+ }
+ @media(min-width:369px) and (max-width:640px){
+    .admin-profile-header h1::before{
+      margin-left: -20px;
+      height: 3rem;
+      margin-top: 40px;
+    }
+ }
+
+ @media(min-width:300px) and (max-width:368px){
+    .admin-profile-header h1{
+       font-size: 35px; 
+       font-weight: 700;
+       margin-top: 50px;
+       margin-left: -20px;
+       padding-top: 35px;
+    }
+ }
+ @media(min-width:300px) and (max-width:368px){
+    .admin-profile-header h1::before{
+      margin-left: -20px;
+      height: 3rem;
+      margin-top: 60px;
+    }
+ }
+
+ @media only screen and (min-device-width: 465px) and (max-device-width : 545px){
+    
+    
+    .Adminprofiledata{
+
+        width:400px;
+        font-size: smaller;
+        height: 320px;
+
+    }
+    .Adminprofilepic{
+        width: 500px;
+        height: 345px;
+
+    }
+
+    .Adminprofiledata p{
+        
+        margin-left: 55px;    
+        margin-top: -0.5rem;
+    }
+    .Adminprofiledata h4{
+        margin-top: -1rem;
+      
+   }
+    .Adminprofiledata h2{
+        margin-bottom: 28px;
+      
+   }
+  
+}
+
+
+    @media only screen and (min-device-width: 300px) and (max-device-width : 464px){
+    
+    
+      
+        .Adminprofiledata{
+
+            width:290px;
+        
+            height: 350px;
+            margin-left: 1.5px;
+            margin-top: -1rem;
+    
+        }
+        .Adminprofilepic{
+            width: 292px;
+            height: 300px;
+            border:none;
+            
+    
+        }
+    
+        .Adminprofiledata p{
+            
+            margin-left: 90px;    
+            margin-top: -0.5rem;
+        }
+        .Adminprofiledata h4{
+            margin-top: -1rem;
+            margin-left: 10px;
+          
+       }
+        .Adminprofiledata h2{
+            margin-bottom: 28px;
+            margin-left: 10px;
+          
+       }
+        
+    
+}
+
+
+@media only screen and (min-device-width: 331px) and (max-device-width : 464px){
+    .Adminprofile {
+        display: flex;
+        flex-direction: column;
+        padding: 5%;     
+        margin-left:50px;        
+    }
+}
+@media only screen and (min-device-width: 300px) and (max-device-width : 330px){
+    .Adminprofile {
+        display: flex;
+        flex-direction: column;
+        padding: 5%;             
+    }
+}

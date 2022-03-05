@@ -1,0 +1,51 @@
+.container-reset{
+    margin-left: auto;
+    margin-right: auto;
+     max-width: 660px;
+     border-top: 1px solid #6BDCFC;
+     margin-top: 7rem;
+  }
+
+  .errormsgleft4{
+    margin-top: 4rem;
+    font-size: 13px;
+    position: absolute;
+    color: red;
+    font-weight: 500;
+    margin-left: -38rem;
+   }
+    .errormsgleft5{
+      font-size: 13px;
+      position: absolute;
+      color: red;
+      font-weight: 500;
+      margin-top: 4rem;
+    margin-left: -38rem;
+      }
+  
+  @media only screen and (max-width: 1000px){
+  
+    .container-reset{
+      max-width: 500px;
+    }
+    .errormsgleft4{
+      margin-left: -28rem;
+    }
+    .errormsgleft5{
+      margin-left: -28rem;
+    }
+  }
+  @media only screen and (max-width: 500px){
+    .container-reset{
+      max-width: 360px;
+    }
+    #contact input[type="email"]{
+      font-size: 14px;
+    }
+    .errormsgleft4{
+      margin-left: -19rem;
+    }
+    .errormsgleft5{
+      margin-left: -19rem;
+    }
+  }
