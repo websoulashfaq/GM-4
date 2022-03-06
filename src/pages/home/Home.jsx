@@ -100,7 +100,7 @@ const Home = () => {
     },
     {
       name: '60 day',
-      users:158,
+      users: 158,
       org: 15
     },
     {
@@ -168,8 +168,12 @@ const Home = () => {
                 </Grid>
               </Box>
               {/* chart helper :-https://www.geeksforgeeks.org/create-a-line-chart-using-recharts-in-reactjs/ */}
-              <div style={{marginTop:'3rem'}} className='chart section'>
-                <h1 className='admin_chart_title'> <span className='admin_chart_span'>|</span> Real Time Data</h1>
+              <div style={{ marginTop: '3rem' }} className='chart section'>
+                <div className="admin_chart_title_section">
+                  <span>|</span>
+                  <h1> Real Time Data</h1>
+                </div>
+                .admin_
                 <ResponsiveContainer width="100%" aspect={2}>
                   <LineChart data={pdata} margin={{ right: 50 }}>
                     <CartesianGrid />

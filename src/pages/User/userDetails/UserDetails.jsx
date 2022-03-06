@@ -13,7 +13,6 @@ import { Container } from '@mui/material';
 
 //modal import 
 
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
@@ -24,7 +23,6 @@ import { useNavigate } from 'react-router-dom';
 
 //user image
 import user from '../../../assets/userList/user1.jpg'
-import { borderRadius } from '@mui/system';
 import scam from '../../../assets/userList/scam.png'
 
 

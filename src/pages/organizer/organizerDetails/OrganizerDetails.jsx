@@ -1,6 +1,6 @@
 import React  from 'react'
 import './OrganizerDetails.css'
-import { Link } from 'react-router-dom'
+
 
 
 
@@ -13,14 +13,13 @@ import { Container } from '@mui/material';
 
 
 //modal import 
-import Button from '@mui/material/Button';
+
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 
 //org image
 
-import { borderRadius } from '@mui/system';
 import OrgImg from '../../../assets/images/orgimg.jpg'
 
 

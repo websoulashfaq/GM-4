@@ -4,7 +4,6 @@ import imagereq1 from '../../../assets/images/Paid Request Organizer Details/262
 import paidimg1 from '../../../assets/images/Paid Request Organizer Details/paid-stamp-shows-invoice-payment-confirmation-WWWD4P.jpg'
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 const style = {
   position: 'absolute',

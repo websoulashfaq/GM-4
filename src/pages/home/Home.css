@@ -46,33 +46,37 @@ body {
   color: #39caf1;
 }
 .admin_home_link:hover {
-  text-decoration: underline;
-  color: #6bdcfc;
+  color: #39caf1;
 }
 .admin_home_card_icon {
   padding: 0 10px 0 0;
   font-size: 30px;
   color: #1789a8a0;
 }
-/* ine chart Real time data  */
-.admin_chart_title {
-  color: rgba(255, 255, 255, 0.879);
+
+/* Line chart Real time data  */
+
+.admin_chart_title_section{
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 4rem;
   background-color: #39caf1;
-  font-size: 26px;
-  display: flex;
-  align-items: center;
   padding: 0 10px;
   margin-bottom: 30px;
 }
-.admin_chart_span{
-  color: rgb(255, 255, 255);
-  font-weight: 800;
+.admin_chart_title_section span{
+  color: rgba(255, 255, 255, 0.879);
+  font-weight: 900;
   font-size: 30px;
   margin-right: 5px;
 }
-
+.admin_chart_title_section h1{
+  color: rgb(255, 255, 255);
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
 
 @media (max-width: 1100px) {
   .admin_home_main {
