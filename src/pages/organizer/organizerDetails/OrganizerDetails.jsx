@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import './OrganizerDetails.css'
 
 
@@ -22,7 +22,8 @@ import Modal from '@mui/material/Modal';
 
 import OrgImg from '../../../assets/images/orgimg.jpg'
 
-
+import Header from '../../../components/Header/Header'
+import Footer from '../../../components/Footer/Footer'
 
 //grid style
 const Item = styled(Paper)(({ theme }) => ({
@@ -41,7 +42,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  borderRadius:2,
+  borderRadius: 2,
   boxShadow: 24,
   p: 4,
 };
@@ -50,15 +51,15 @@ const style = {
 
 
 
- const OrganizerDetails = () => {
+const OrganizerDetails = () => {
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
     <div>
-
-         {/* <h1>Organizer Details</h1> */}
+      <Header />
+      {/* <h1>Organizer Details</h1> */}
       {/* userdetails card */}
       <Container maxWidth="xl">
         <div className='singelCard'>
@@ -72,11 +73,11 @@ const style = {
                     </div>
                     <div className='org_buttons'>
                       <button style={{ backgroundColor: '#FF0000' }} onClick={handleOpen} >Block Organizer</button>
-                    
+
                     </div>
 
                     {/* modal start */}
-                    
+
                     <Modal
                       open={open}
                       onClose={handleClose}
@@ -89,7 +90,7 @@ const style = {
                         </Typography>
                         <hr />
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Are you sure you want to Block this Organizer
+                          Are you sure you want to Block this Organizer
                         </Typography>
                         <hr />
                         <div className='modal_buttons'>
@@ -120,7 +121,7 @@ const style = {
                           <th>number</th>
                         </tr>
                       </thead>
-                      <tbody>                  
+                      <tbody>
                         <tr>
                           <td>Total daily match conducted</td>
                           <td>8</td>
@@ -153,7 +154,7 @@ const style = {
 
 
 
-
+      <Footer />
 
     </div>
   )

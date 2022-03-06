@@ -9,6 +9,8 @@ import Grid from '@mui/material/Grid';
 import { Container } from '@mui/material';
 import content from './content';
 
+import Header from '../../../components/Header/Header';
+import Footer from '../../../components/Footer/Footer';
 
 
 //card meterail ui
@@ -24,7 +26,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const Users = () => {
   return (
     <div>
-
+      <Header />
       {/* userHeader */}
       <div className='userList_header'>
         <h1>ALL USERS</h1>
@@ -76,6 +78,7 @@ const Users = () => {
         </Box>
       </Container>
 
+      <Footer />
     </div>
   )
 }

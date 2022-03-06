@@ -2,21 +2,23 @@ import React from 'react'
 import './Notifications.css'
 import img1 from '../../assets/images/notification/zYxDCQT.jpg'
 import img2 from '../../assets/images/notification/w4Mp4ny.jpg'
-import img3 from  '../../assets/images/notification/CtAQDCP.jpg'
+import img3 from '../../assets/images/notification/CtAQDCP.jpg'
 
+import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
 
 const Notifications = () => {
   return (
     <div className='notification-bg'>
+      <Header />
+      <div className='idp-head-bg'>
 
-<div className='idp-head-bg'>
+        <h1>Notification</h1>
+      </div>
 
-<h1>Notification</h1>
-</div>
+      {/* first card */}
 
-{/* first card */}
-
-<div className="notification-list">
+      <div className="notification-list">
         <div className="notification-list_img">
           <img src={img1} alt="user" />
         </div>
@@ -26,7 +28,7 @@ const Notifications = () => {
           <p><small>10 mins ago</small></p>
         </div>
       </div>
-{/* second card */}
+      {/* second card */}
       <div className="notification-list">
         <div className="notification-list_img">
           <img src={img3} alt="user" />
@@ -49,7 +51,7 @@ const Notifications = () => {
           <p><small>10 mins ago</small></p>
         </div>
       </div>
-{/* fourth card */}
+      {/* fourth card */}
       <div className="notification-list">
         <div className="notification-list_img">
           <img src={img2} alt="user" />
@@ -59,16 +61,16 @@ const Notifications = () => {
           <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam numquam enim reiciendis in? Quia mollitia  excepturi!</p>
           <p><small>10 mins ago</small></p>
         </div>
-       
+
       </div>
 
-      
-       
-      
-      
-      
+
+
+
+
+      <Footer />
     </div>
-    
+
   )
 }
 

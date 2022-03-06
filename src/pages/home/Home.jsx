@@ -112,7 +112,7 @@ const Home = () => {
   return (
     <>
       <div className="admin_home_container">
-        {/* <Header /> */}
+        <Header />
         <div className="admin_home">
           <SideNav />
           <div className="admin_home_main">
@@ -193,7 +193,7 @@ const Home = () => {
 
           </div>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   )

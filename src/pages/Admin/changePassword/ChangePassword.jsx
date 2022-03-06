@@ -7,6 +7,9 @@ import { Modal } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
+import Header from '../../../components/Header/Header'
+import Footer from '../../../components/Footer/Footer'
+
 
 const ChangePassword = () => {
 
@@ -22,22 +25,22 @@ const ChangePassword = () => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    height:200,
+    height: 200,
     bgcolor: 'background.paper',
 
     boxShadow: 24,
-    p:5,
-    
-  
+    p: 5,
+
+
   };
 
   const formSchema = Yup.object({
 
-    oldpass:Yup.string()
-    .required('**Old password required')
-    .min(8, 'Password must have atleast 8 characters'),
+    oldpass: Yup.string()
+      .required('**Old password required')
+      .min(8, 'Password must have atleast 8 characters'),
 
-   
+
     password: Yup
       .string()
       .required('**New Password is required')
@@ -46,7 +49,7 @@ const ChangePassword = () => {
     passwordConfirm: Yup
       .string()
       .required('**Confirm password required')
-      .oneOf([Yup.ref('password'),null], '**Password mismatch' ),
+      .oneOf([Yup.ref('password'), null], '**Password mismatch'),
   })
 
   const validationOpt = { resolver: yupResolver(formSchema) }
@@ -64,100 +67,100 @@ const ChangePassword = () => {
 
   return (
     <div className='AdminChangepass'  >
-     
+      <Header />
 
-    {/*admin change password header */}
+      {/*admin change password header */}
 
       <div className='admin-changepass-header '>
         <h1>Change Password</h1>
       </div>
 
-    {/*admin change password form */}
+      {/*admin change password form */}
 
-     <div >
-      <form className='AdminChangepassForm' onSubmit={handleSubmit(onFormSubmit)}>
-      <fieldset class="uk-fieldset">
-        
-       
-      <div class="uk-margin">
-            <input class="uk-input {`form-control ${
-                  errors.password ? 'is-invalid' : ''}`} "  name='oldpass'  type="password" placeholder="Old Password" required="" minLength={8}
-             {...register('oldpass')}/>
+      <div >
+        <form className='AdminChangepassForm' onSubmit={handleSubmit(onFormSubmit)}>
+          <fieldset class="uk-fieldset">
+
+
+            <div class="uk-margin">
+              <input class="uk-input {`form-control ${
+                  errors.password ? 'is-invalid' : ''}`} "  name='oldpass' type="password" placeholder="Old Password" required="" minLength={8}
+                {...register('oldpass')} />
             </div>
 
             <div className="invalid-feedback" >
-              {errors.oldpass?.message} 
-               
+              {errors.oldpass?.message}
+
             </div>
 
             <div class="uk-margin">
 
-            <input class="uk-input  {`form-control ${
+              <input class="uk-input  {`form-control ${
                   errors.password ? 'is-invalid' : ''}`} "
-              id='password' name="password" type="password" placeholder="New Password" required="" 
-  
-            {...register('password') } 
-         
-            />
+                id='password' name="password" type="password" placeholder="New Password" required=""
+
+                {...register('password')}
+
+              />
 
             </div>
 
             <div className="invalid-feedback" >
-              {errors.password?.message} 
-               
+              {errors.password?.message}
+
             </div>
 
             <div class="uk-margin">
-            <input class="uk-input  {`form-control ${
+              <input class="uk-input  {`form-control ${
                   errors.passwordConfirm ? 'is-invalid' : ''
                 }`} " id='passwordConfirm' name="passwordConfirm" type="password" placeholder="Confirm password" required=""
-                 {...register('passwordConfirm')}
-                
-            />
+                {...register('passwordConfirm')}
+
+              />
 
 
-          <div className="invalid-feedback" >
-              {errors.passwordConfirm?.message} 
-               
+              <div className="invalid-feedback" >
+                {errors.passwordConfirm?.message}
+
+              </div>
+
             </div>
 
+            <div>
+              <button class="AdminChangepassButton" onClick={onFormSubmit}>Save</button>
             </div>
-          
-        <div>
-          <button class="AdminChangepassButton" onClick={onFormSubmit}>Save</button> 
-        </div>
-      </fieldset>
+          </fieldset>
 
-      <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="admincp-modal-title"
-                aria-describedby="admincp-modal-description">
-                <Box sx={style} className='admincp-modal_box'>
-                 
-                  <Typography id="admincp-modal-description" className='rules_modal'  >
-​
-                    <h3>Password changed</h3>
-                   
-                    <span>Your password changed Successfully!</span>
-                    <br/>
-                    
-                  </Typography>
-                  <div className='admin-changepass-button_area'>
-                  <button onClick={handleClose} className='admincp-modal_close'>Ok</button>
-                  
-                  </div>
-                  
-                </Box>
-              </Modal>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="admincp-modal-title"
+            aria-describedby="admincp-modal-description">
+            <Box sx={style} className='admincp-modal_box'>
 
-      
-      </form>
+              <Typography id="admincp-modal-description" className='rules_modal'  >
 
-  
+                <h3>Password changed</h3>
+
+                <span>Your password changed Successfully!</span>
+                <br />
+
+              </Typography>
+              <div className='admin-changepass-button_area'>
+                <button onClick={handleClose} className='admincp-modal_close'>Ok</button>
+
+              </div>
+
+            </Box>
+          </Modal>
+
+
+        </form>
+
+
 
       </div>
-      
+      <Footer />
     </div>
   )
 }

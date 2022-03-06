@@ -25,6 +25,8 @@ import { useNavigate } from 'react-router-dom';
 import user from '../../../assets/userList/user1.jpg'
 import scam from '../../../assets/userList/scam.png'
 
+import Header from '../../../components/Header/Header';
+import Footer from '../../../components/Footer/Footer';
 
 //grid style
 const Item = styled(Paper)(({ theme }) => ({
@@ -42,7 +44,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  borderRadius:2,
+  borderRadius: 2,
   boxShadow: 24,
   p: 4,
 };
@@ -58,20 +60,21 @@ const UserDetails = () => {
 
 
   const [ScamOpen, setScamOpen] = React.useState(false);
-  const ScamOpenn=()=> setScamOpen(true) ;
-  const handleScamClose=()=> setScamOpen(false)
-  
+  const ScamOpenn = () => setScamOpen(true);
+  const handleScamClose = () => setScamOpen(false)
+
 
   //navigate
   const navigate = useNavigate();
 
   return (
     <div>
+      <Header />
       {/* userDetails header */}
       <div className='userDetails_header'>
-                <h1 className='userHeader_text' >user details</h1>
-                <h1  id='userHeader_text'>user details</h1>
-            </div>
+        <h1 className='userHeader_text' >user details</h1>
+        <h1 id='userHeader_text'>user details</h1>
+      </div>
 
       {/* userdetails card */}
       <Container maxWidth="xl">
@@ -90,14 +93,14 @@ const UserDetails = () => {
                     {/* action buttons */}
                     <div className='userdetials-user_buttons'>
                       <button style={{ backgroundColor: '#FF0000' }} onClick={handleOpen} >Block User</button>
-                      <button style={{ backgroundColor: '#FF0000' }}  onClick={ScamOpenn}>Scam</button>
-                      <button onClick={(()=>{navigate('/admin/usertournament');})}>Booked Tournaments</button>
+                      <button style={{ backgroundColor: '#FF0000' }} onClick={ScamOpenn}>Scam</button>
+                      <button onClick={(() => { navigate('/admin/usertournament'); })}>Booked Tournaments</button>
                     </div>
                     {/* end aactions buttons section */}
 
 
                     {/* block modal  start */}
-                    
+
                     <Modal
                       open={open}
                       onClose={handleClose}
@@ -110,7 +113,7 @@ const UserDetails = () => {
                         </Typography>
                         <hr />
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Are you sure you want to Block this user
+                          Are you sure you want to Block this user
                         </Typography>
                         <hr />
                         <div className='userdetails-modal_buttons'>
@@ -122,7 +125,7 @@ const UserDetails = () => {
                     {/* block modal end */}
 
                     {/* scam modal  start */}
-                    
+
                     <Modal
                       open={ScamOpen}
                       onClose={handleScamClose}
@@ -135,7 +138,7 @@ const UserDetails = () => {
                         </Typography>
                         <hr />
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Are you sure you want to report scam this user
+                          Are you sure you want to report scam this user
                         </Typography>
                         <div class="admin-alert_image">
                           <img src={scam} alt="" />
@@ -144,7 +147,7 @@ const UserDetails = () => {
                         <hr />
                         <div className='userdetailsmodal_buttons'>
                           <button className='modalNo' onClick={handleScamClose}>No</button>
-                          <button>Yes</button> 
+                          <button>Yes</button>
                         </div>
                       </Box>
                     </Modal>
@@ -212,14 +215,7 @@ const UserDetails = () => {
 
       {/* userCard end */}
 
-
-
-
-
-      
-      <Link to="/admin/usertournament">booked tournament</Link>
-      <Link to="/admin/action"> BlockUser</Link>
-      <Link to="/admin/action"> Scam</Link>
+      <Footer />
     </div>
   )
 }

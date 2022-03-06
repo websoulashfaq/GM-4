@@ -1,7 +1,7 @@
 import React from 'react'
 import './Organizers.css'
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 //meterail ui
 
@@ -16,12 +16,14 @@ import SearchIcon from '@mui/icons-material/Search';
 //images
 import OrgUser from '../../../assets/images/orguser.jpg';
 
+import Header from '../../../components/Header/Header'
+import Footer from '../../../components/Footer/Footer'
 
-{/** All Organizers Card Style */}
+{/** All Organizers Card Style */ }
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  height:'85px',
+  height: '85px',
   color: theme.palette.text.secondary,
 }));
 
@@ -32,21 +34,23 @@ const Item = styled(Paper)(({ theme }) => ({
 const Organizers = () => {
   return (
     <div>
-
+      <Header />
 
       <div className='org-all'>
 
-       {/*Organization heading background*/}
+        {/*Organization heading background*/}
         <div className='org-head'>
         </div>
 
         <Box sx={{ flexGrow: 1 }} ml='auto' mr='auto'>
-          <Grid container spacing={3} 
-                sx={{maxWidth:1200}} 
-                style={{width:'100%',
-                paddingRight:'25px'}} 
-                ml='auto' mr='auto' 
-                mt='-60px' mb='100px'
+          <Grid container spacing={3}
+            sx={{ maxWidth: 1200 }}
+            style={{
+              width: '100%',
+              paddingRight: '25px'
+            }}
+            ml='auto' mr='auto'
+            mt='-60px' mb='100px'
           >
 
             {/*Organization heading */}
@@ -56,193 +60,196 @@ const Organizers = () => {
           </Grid>
         </Box>
 
-        
-    
 
 
-       {/* Search Bar */}
-       <Box sx={{ flexGrow: 1 }} ml='auto' mr='auto'>
-          <Grid container spacing={3} sx={{maxWidth:1200}} 
-                style={{width:'100%'}} 
-                ml='auto' mr='auto' mt='50px' mb='10px'>
 
-             <Grid item sm={12} md={6}>
-             </Grid>
 
-            <Grid paddingRight={7} item sm={12}  md={6}  ml='auto' mr='auto' >
+        {/* Search Bar */}
+        <Box sx={{ flexGrow: 1 }} ml='auto' mr='auto'>
+          <Grid container spacing={3} sx={{ maxWidth: 1200 }}
+            style={{ width: '100%' }}
+            ml='auto' mr='auto' mt='50px' mb='10px'>
+
+            <Grid item sm={12} md={6}>
+            </Grid>
+
+            <Grid paddingRight={7} item sm={12} md={6} ml='auto' mr='auto' >
               <Paper
                 component="form"
                 sx={{ p: '2px 4px', display: 'flex', float: 'right' }}
               >
 
-               <InputBase
+                <InputBase
                   sx={{ ml: 1, flex: 1 }}
                   placeholder="Search Organizer..."
                   inputProps={{ 'aria-label': 'Search Organizers' }}
-               />
-               <IconButton type="submit" 
-                  sx={{ p: '10px',
-                  backgroundColor:'#6BDCFC',
-                  color:'white',
-                  }} 
-                 aria-label="search">
-                 <SearchIcon />
-               </IconButton>
-     
+                />
+                <IconButton type="submit"
+                  sx={{
+                    p: '10px',
+                    backgroundColor: '#6BDCFC',
+                    color: 'white',
+                  }}
+                  aria-label="search">
+                  <SearchIcon />
+                </IconButton>
+
               </Paper>
             </Grid>
-           </Grid>
+          </Grid>
         </Box>
 
 
-         {/** all Organizers */}
+        {/** all Organizers */}
         <Box sx={{ flexGrow: 1 }} ml='auto' mr='auto'>
-          <Grid container padding={5} 
-             sx={{maxWidth:1200}} 
-             style={{width:'100%',
-             paddingright:'50px'}} 
-             ml='auto' mr='auto' 
-             mt='20px' mb='100px'
+          <Grid container padding={5}
+            sx={{ maxWidth: 1200 }}
+            style={{
+              width: '100%',
+              paddingright: '50px'
+            }}
+            ml='auto' mr='auto'
+            mt='20px' mb='100px'
           >
 
-           {/** all Organizers Card */}
+            {/** all Organizers Card */}
 
-           <Grid p={2}  item xs={12} sm={6} md={4} xl={3}>
-             <Item className='org-img' >
-               <img  src={OrgUser}/>
-               <p>Reagan Banks</p>
-               <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-             </Item>
-           </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img' >
+                <img src={OrgUser} />
+                <p>Reagan Banks</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-           <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-             <Item className='org-img'>
-               <img  src={OrgUser}/>
-               <p>Zoie Small</p>
-               <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-             </Item>
-           </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Zoie Small</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-           <Grid  p={2}  item xs={12} sm={6} md={4} xl={3}>
-             <Item className='org-img'>
-                <img  src={OrgUser}/>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
                 <p>Elisabeth Howe</p>
-               <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-             </Item>
-           </Grid>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-           <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-             <Item className='org-img'>
-               <img  src={OrgUser}/>
-               <p>Elisabeth Elliott</p>
-               <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-             </Item>
-           </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Elisabeth Elliott</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-           <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-             <Item className='org-img'>
-               <img  src={OrgUser}/>
-               <p>Yadira Lucero</p>
-               <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-             </Item>
-           </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Yadira Lucero</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-           <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-             <Item className='org-img'>
-               <img Width='30px' src={OrgUser}/>
-               <p>Cassius Bailey</p>
-               <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-             </Item>
-           </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img Width='30px' src={OrgUser} />
+                <p>Cassius Bailey</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-           <Grid  p={2}   item xs={12} sm={6} md={4} xl={3}>
-             <Item className='org-img'>
-               <img  src={OrgUser}/>
-               <p>Zoie Small</p>
-               <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-             </Item>
-           </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Zoie Small</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-           <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-             <Item className='org-img'>
-                <img  src={OrgUser}/>
-               <p>Elisabeth Howe</p>
-               <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-             </Item>
-           </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Elisabeth Howe</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-           <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-             <Item className='org-img'>
-              <img  src={OrgUser}/>
-              <p>Elisabeth Elliott</p>
-             <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-             </Item>
-           </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Elisabeth Elliott</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-           <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-            <Item className='org-img'>
-              <img  src={OrgUser}/>
-              <p>Yadira Lucero</p>
-              <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-            </Item>
-           </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Yadira Lucero</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-      <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-        <Item className='org-img'>
-          <img Width='30px' src={OrgUser}/>
-          <p>Cassius Bailey</p>
-          <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-        </Item>
-      </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img Width='30px' src={OrgUser} />
+                <p>Cassius Bailey</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-      <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-        <Item className='org-img'>
-         <img  src={OrgUser}/>
-         <p>Zoie Small</p>
-          <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>         </Item>
-       </Grid> 
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Zoie Small</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>         </Item>
+            </Grid>
 
-      <Grid p={2}   item xs={12} sm={6} md={4} xl={3}>
-        <Item className='org-img'>
-           <img  src={OrgUser}/>
-           <p>Elisabeth Howe</p>
-          <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>        </Item>
-       </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Elisabeth Howe</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>        </Item>
+            </Grid>
 
-      <Grid p={2}  item xs={12} sm={6} md={4} xl={3}>
-        <Item className='org-img'>
-          <img  src={OrgUser}/>
-          <p>Elisabeth Elliott</p>
-          <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-        </Item>
-      </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Elisabeth Elliott</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-      <Grid p={2}  item xs={12} sm={6} md={4} xl={3}>
-        <Item className='org-img'>
-          <img  src={OrgUser}/>
-          <p>Yadira Lucero</p>
-          <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-        </Item>
-      </Grid>
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img src={OrgUser} />
+                <p>Yadira Lucero</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
-      <Grid p={2}  item xs={12} sm={6} md={4} xl={3}>
-        <Item className='org-img'>
-          <img Width='30px' src={OrgUser}/>
-          <p>Cassius Bailey</p>
-          <Link className='org-more'  to='/admin/organizerdetails'>more details?</Link>
-        </Item>
-      </Grid>
-
-  
+            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
+              <Item className='org-img'>
+                <img Width='30px' src={OrgUser} />
+                <p>Cassius Bailey</p>
+                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
+              </Item>
+            </Grid>
 
 
-      </Grid>
-    </Box>
+
+
+          </Grid>
+        </Box>
 
 
 
       </div>
-
+      <Footer />
     </div>
   )
 }

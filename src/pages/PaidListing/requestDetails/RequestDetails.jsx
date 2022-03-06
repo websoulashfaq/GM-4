@@ -5,6 +5,10 @@ import paidimg1 from '../../../assets/images/Paid Request Organizer Details/paid
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+
+import Header from '../../../components/Header/Header'
+import Footer from '../../../components/Footer/Footer'
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -46,7 +50,8 @@ const RequestDetails = () => {
   const handleOooopen = () => setOooopen(true);
   const handleCccclose = () => setOooopen(false);
   return (
-    <div className='requestDetailsMain_wrapper' style={{maxWidth: "100%"}}>
+    <div className='requestDetailsMain_wrapper' style={{ maxWidth: "100%" }}>
+      <Header />
       {/* This div is for wrapping the heading */}
       <div className='requestDetailsMainheading'>
         <div className='requestDetails_emptyheadingdiv'>
@@ -165,7 +170,7 @@ const RequestDetails = () => {
         aria-describedby="modal-modal-description"
       >
         <div className='requestDetails_Dialoge__box'>
-          <Box sx={style}>
+          <Box sx={style} className='requestDetails_modal_box' >
             <div className='texxt'>
               <h3>Pending !!</h3>
             </div>
@@ -184,7 +189,7 @@ const RequestDetails = () => {
         aria-describedby="modal-modal-description"
       >
         <div className='requestDetails_Dialoge__box'>
-          <Box sx={style}>
+          <Box sx={style} className='requestDetails_modal_box' >
             <div className='texxt'>
               <h3>Rejected !!</h3>
             </div>
@@ -195,6 +200,7 @@ const RequestDetails = () => {
           </Box>
         </div>
       </Modal>
+      <Footer />
     </div>
   )
 }
