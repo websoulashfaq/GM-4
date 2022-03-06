@@ -27,9 +27,6 @@ const navigate = () => {
            
             <Router>
 
-            <div>
-                <Header/>
-            </div>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/admin/allowed/paidlist' element={<AllowedPaidList />} />
@@ -49,9 +46,7 @@ const navigate = () => {
                     <Route path='/admin/profile' element={<Profile />} />
                     <Route path='/admin/edit/profile' element={<EditProfile />} />
                 </Routes>
-                <div>
-                    <Footer/>
-                </div>
+               
             </Router>
         </div>
     )

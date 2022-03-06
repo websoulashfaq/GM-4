@@ -2,6 +2,8 @@ import React from 'react'
 import './ForgotPassword.css'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
+import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
 const ForgotPassword = () => {
   const { register, handleSubmit, watch, formState: { errors }, reset} = useForm();
   const onSubmit = (data) =>{
@@ -11,7 +13,7 @@ const ForgotPassword = () => {
   console.log(errors);
   return (
     <div>
-      {/* <Link to="/admin/reset/password">Reset</Link> */}
+     <Header/>
       <div class="container-frgt">  
   <form id="contact" onSubmit={handleSubmit(onSubmit)}>
     
@@ -24,6 +26,7 @@ const ForgotPassword = () => {
     </fieldset>
   </form>
 </div>
+<Footer/>
     </div>
   )
 }
