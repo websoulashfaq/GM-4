@@ -45,6 +45,7 @@ const navigate = () => {
                     <Route path='/admin/profile' element={<Profile />} />
                     <Route path='/admin/edit/profile' element={<EditProfile />} />
                 </Routes>
+               
             </Router>
         </div>
     )

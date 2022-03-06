@@ -41,7 +41,6 @@ html body{
  .org-img p{
      text-align: left;
      color: black;
-     margin-top: auto;
      margin-bottom: auto;
      font-size: 18px;
      padding-left: 80px;
@@ -55,7 +54,7 @@ html body{
     float: right;
     font-weight: 500;
     padding-top: 15px;
-    color: #525252;
+    color: #0a06ff;
 
  }
  .org-more:hover{
@@ -96,12 +95,16 @@ html body{
  @media (max-width:400px) {
     .org-head2 h1{
         font-size: 30px;
-        top:140px; 
+        top:115px; 
         left: 0px;
     }
     .org-head2 h1::before{
         height: 28px;
         width: 8px;
+    }
+     .org-more{
+        padding-top: 5px;
+
     }
     
  }

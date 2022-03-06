@@ -173,7 +173,6 @@ const Home = () => {
                   <span>|</span>
                   <h1> Real Time Data</h1>
                 </div>
-                .admin_
                 <ResponsiveContainer width="100%" aspect={2}>
                   <LineChart data={pdata} margin={{ right: 50 }}>
                     <CartesianGrid />

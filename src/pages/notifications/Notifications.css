@@ -7,14 +7,14 @@
 }
 .idp-head-bg h1{
   
-    margin-left: 4rem;
+    margin-left: 7rem;
     text-align: left;
-    font-size: 42px;
+    font-size: 38px;
     font-weight: 700;
     color: #ffff;
     text-transform: uppercase;
     left: -14px;
-    top: 12px;
+    top: 17px;
     
     position: relative;
 }
@@ -24,16 +24,19 @@
     width: 6px;
     height: 3rem;
     background-color: #ffff;
-    left: -19px;
-    top: 10px;
+    left: -24px;
+    top: 4px;
     opacity: 0.5;
 }
 
 .notification-bg{
     background-color: rgb(243, 237, 237);
+    
 }
 
-
+#card-mrgn-2{
+    margin-bottom: 3rem;
+}
 
 .notification-list {
    

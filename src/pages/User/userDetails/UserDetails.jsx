@@ -77,7 +77,7 @@ const UserDetails = () => {
       </div>
 
       {/* userdetails card */}
-      <Container maxWidth="xl">
+      <Container maxWidth="xl"  >
         <div className='user_details-singelCard'>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2} justifyContent="center">
@@ -106,8 +106,9 @@ const UserDetails = () => {
                       onClose={handleClose}
                       aria-labelledby="modal-modal-title"
                       aria-describedby="modal-modal-description"
+
                     >
-                      <Box sx={style}>
+                      <Box sx={style} className="modal_User">
                         <Typography id="modal-modal-title" variant="h6" component="h2">
                           Block user
                         </Typography>
@@ -118,7 +119,7 @@ const UserDetails = () => {
                         <hr />
                         <div className='userdetails-modal_buttons'>
                           <button className='modalNo' onClick={handleClose}>No</button>
-                          <button>Yes</button>
+                          <button className='modalYess'>Yes</button>
                         </div>
                       </Box>
                     </Modal>
@@ -130,9 +131,9 @@ const UserDetails = () => {
                       open={ScamOpen}
                       onClose={handleScamClose}
                       aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
+                      id="modal_shyam"
                     >
-                      <Box sx={style}>
+                      <Box sx={style} className="modal_User">
                         <Typography id="modal-modal-title" variant="h6" component="h2">
                           Block user
                         </Typography>
@@ -147,7 +148,7 @@ const UserDetails = () => {
                         <hr />
                         <div className='userdetailsmodal_buttons'>
                           <button className='modalNo' onClick={handleScamClose}>No</button>
-                          <button>Yes</button>
+                          <button className='modalYess'>Yes</button>
                         </div>
                       </Box>
                     </Modal>
@@ -212,8 +213,6 @@ const UserDetails = () => {
         </div>
       </Container>
 
-
-      {/* userCard end */}
 
       <Footer />
     </div>
