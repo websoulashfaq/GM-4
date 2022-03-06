@@ -48,7 +48,7 @@ const Users = () => {
 
 
 
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 }} className="main_userList">
           <Grid container spacing={2}>
 
             {/* userLIst data  */}
