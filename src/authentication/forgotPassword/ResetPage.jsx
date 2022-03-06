@@ -1,6 +1,8 @@
 import React from 'react'
 import './ResetPage.css'
 import { useForm } from 'react-hook-form';
+import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
 const ResetPage = () => {
   const { register, handleSubmit, watch, formState: { errors }, reset} = useForm();
   const onSubmit = (data) =>{
@@ -10,6 +12,7 @@ const ResetPage = () => {
   console.log(errors);
   return (
     <div>
+      <Header/>
      <div class="container-reset">  
   <form id="contact"onSubmit={handleSubmit(onSubmit)}>
     
@@ -26,7 +29,7 @@ const ResetPage = () => {
   </form>
 </div>
 
-
+<Footer/>
     </div>
   )
 }

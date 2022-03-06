@@ -3,12 +3,13 @@ import './Notifications.css'
 import img1 from '../../assets/images/notification/zYxDCQT.jpg'
 import img2 from '../../assets/images/notification/w4Mp4ny.jpg'
 import img3 from  '../../assets/images/notification/CtAQDCP.jpg'
-
+import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
 
 const Notifications = () => {
   return (
     <div className='notification-bg'>
-
+     <Header/>
 <div className='idp-head-bg'>
 
 <h1>Notification</h1>
@@ -50,7 +51,7 @@ const Notifications = () => {
         </div>
       </div>
 {/* fourth card */}
-      <div className="notification-list">
+      <div className="notification-list" id='card-mrgn-2'>
         <div className="notification-list_img">
           <img src={img2} alt="user" />
         </div>
@@ -65,7 +66,7 @@ const Notifications = () => {
       
        
       
-      
+      <Footer/>
       
     </div>
     
