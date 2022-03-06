@@ -9,8 +9,7 @@
     height: 8rem;
     background-color: #87CEEB;
     margin: 0 auto;
-    min-width: 420px !important;
-    margin-top: 1rem !important;
+    min-width: 300px !important;
 }
 .reqPaidlist_headding h1{
     color: #ffff;
@@ -43,13 +42,14 @@
     height: 2.5rem;
     border-radius: 5px;
     cursor: pointer;
+    width: 80%;
 }
 .reqPaidlist_container td{
     font-size: 1.1rem;
     color: #4d4d4d;
     font-weight: 600 !important;
 }
-@media  (min-width:1439px) {
+@media  (min-width:2000px) {
     .reqPaidlist_container td{
         font-size: 2rem;
         color: #4d4d4d;
@@ -70,5 +70,23 @@
 @media  (max-width:600px){
     .reqPaidlist_headding h1{
         font-size: 1.5rem;
+    }
+    .reqPaidlist_container th{
+        font-size: 12px !important;
+    }
+    .reqPaidlist_container td{
+        font-size: 10px;
+        color: #4d4d4d;
+        font-weight: 700 !important;
+    }
+    .reqPaidlist_container button{
+        font-size: 10px;
+        font-weight: 700;
+    }
+}
+@media  (max-width:450px){
+    .reqPaidlist_container button{
+        font-size: 8px;
+        font-weight: 700;
     }
 }
