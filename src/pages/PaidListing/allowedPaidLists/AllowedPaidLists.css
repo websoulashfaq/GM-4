@@ -9,8 +9,7 @@
     height: 8rem;
     background-color: #87CEEB;
     margin: 0 auto;
-    min-width: 348px !important;
-    margin-top: 1rem !important;
+    min-width: 300px !important;
 }
 .allowedPaidlist_headding h1{
     color: #ffff;
@@ -43,14 +42,14 @@
     height: 2.5rem;
     border-radius: 5px;
     cursor: pointer;
-    width: 50%;
+    width: 70%;
 }
 .allowedPaidlist_container td{
     font-size: 1.1rem;
     color: #4d4d4d;
     font-weight: 600 !important;
 }
-@media  (min-width:1439px){
+@media  (min-width:2000px){
     .allowedPaidlist_container th{
         font-size: 2.5rem !important;
     }
@@ -81,6 +80,7 @@
         border-radius: 5px;
         cursor: pointer;
         width: 60%;
+        font-weight: 700;
     }
     .allowedPaidlist_container td{
         font-size: 0.8rem;
@@ -89,5 +89,31 @@
     }
     .allowedPaidlist_headding h1{
         font-size: 1.5rem;
+    }
+}
+@media  (max-width:600px){
+    .allowedPaidlist_container th{
+        font-size: 1.5rem !important;
+    }
+}
+@media  (max-width:600px){
+    .allowedPaidlist_container th{
+        font-size: 12px !important;
+        font-weight: 700;
+    }
+    .allowedPaidlist_container td{
+        font-size: 10px;
+        color: #4d4d4d;
+        font-weight: 700 !important;
+    }
+    .allowedPaidlist_container button{
+        font-size: 10px;
+        font-weight: 700;
+    }
+}
+@media  (max-width:450px){
+    .allowedPaidlist_container button{
+        font-size: 8px;
+        font-weight: 700;
     }
 }
