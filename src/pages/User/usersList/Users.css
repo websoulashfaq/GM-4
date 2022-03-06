@@ -146,3 +146,10 @@
         padding-top: 1rem;
     }
 }
+.main_userList{
+    margin-bottom: 3rem;
+}
+.userList-viewMore_option a:hover{
+    color:#6BDCFC !important;
+    
+}

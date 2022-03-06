@@ -166,7 +166,7 @@ const RequestDetails = () => {
         aria-describedby="modal-modal-description"
       >
         <div className='requestDetails_Dialoge__box'>
-          <Box sx={style}>
+          <Box sx={style} className='requestDetails_modal_box' >
             <div className='texxt'>
               <h3>Pending !!</h3>
             </div>
@@ -185,7 +185,7 @@ const RequestDetails = () => {
         aria-describedby="modal-modal-description"
       >
         <div className='requestDetails_Dialoge__box'>
-          <Box sx={style}>
+          <Box sx={style} className='requestDetails_modal_box' >
             <div className='texxt'>
               <h3>Rejected !!</h3>
             </div>

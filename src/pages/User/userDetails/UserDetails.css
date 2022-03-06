@@ -11,6 +11,10 @@
 .userDetails_header h1{
 
 }
+.userdetailsmodal_buttons{
+    display: flex;
+    justify-content: end;
+}
 
 .userDetails_header h1:before{
 
@@ -35,7 +39,8 @@
     padding: 2rem 0 1rem;
 }
 .user_details-singelCard{
-    margin-top: 8rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 .userdetails-userImgeDetails{
     height: auto;
@@ -149,7 +154,7 @@
     justify-content: end;
     margin-top: 2rem;
 }
-.userdetails-modal_buttons button{
+.modalYess{
     width: 7rem;
     height: 2.5rem;
     background-color: #21ba45;
@@ -159,10 +164,18 @@
 .modalNo{
     background-color: #F32013 !important;
     margin-right: 5px;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #ffff;
+    border: none;
 }
 
 
 @media (max-width:420px){
+    .modal_User{
+        width: 80% !important;
+    }
     .userHeader_text{
         font-size: 34px;
         top: 16px;
@@ -187,3 +200,4 @@
     text-align: center;
     font-size: 17px;
 }
+
