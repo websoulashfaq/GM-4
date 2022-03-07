@@ -9,12 +9,12 @@
   
     margin-left: 7rem;
     text-align: left;
-    font-size: 38px;
+    font-size: 52px;
     font-weight: 700;
     color: #ffff;
     text-transform: uppercase;
     left: -14px;
-    top: 17px;
+    top: 8px;
     
     position: relative;
 }
@@ -25,7 +25,7 @@
     height: 3rem;
     background-color: #ffff;
     left: -24px;
-    top: 4px;
+    top: 14px;
     opacity: 0.5;
 }
 
@@ -78,8 +78,33 @@
     margin-bottom: 5px;
     line-height: 1.2;
 }
+@media only screen and (max-width: 1000px) {
+    .idp-head-bg h1{
+        font-size: 45px;
+        top: 16px;
+    }
+    .idp-head-bg h1::before{
+        top: 10px;
+        height: 40px;
+    }
+    }
 
 
+
+
+@media only screen and (max-width: 500px) {
+  .idp-head-bg h1{
+      font-size: 35px;
+      top: 16px;
+      left: -24px;
+
+  }
+  .idp-head-bg h1::before{
+      top: 9px;
+      height: 33px;
+      left: -25px;
+  }
+  }
 
 
 
