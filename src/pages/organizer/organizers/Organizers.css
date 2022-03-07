@@ -30,8 +30,8 @@ html body{
     left: 50px;
     width: 10px;
     height: 50px;
-    background-color: rgb(255, 255, 255);
- 
+    background-color: rgb(240, 234, 234);
+  
  }
  .org-img img{
      text-align: left;
@@ -79,7 +79,7 @@ html body{
         left: 50px;
         width: 10px;
         height: 35px;
-        background-color: rgb(255, 255, 255);
+        background-color: rgb(240, 234, 234);
      
      }
      .org-img p{
