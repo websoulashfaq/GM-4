@@ -142,7 +142,7 @@ const ChangePassword = () => {
 
                 <h3>Password changed</h3>
 
-                <span>Your password changed Successfully!</span>
+                <span style={{letterSpacing:'none'}}>Your password changed Successfully!</span>
                 <br />
 
               </Typography>

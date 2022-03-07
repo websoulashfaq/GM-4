@@ -211,7 +211,7 @@ const EditProfile = () => {
               <Typography id="adminep-modal-description" className='rules_modal'   >
 
                 <h3>Profile updated</h3>
-                <span>Your profile is updates Successfully!</span>
+                <span style={{letterSpacing:'none'}}>Your profile is updates Successfully!</span>
                 <br />
 
                 <div className='adminep-button_area'>
