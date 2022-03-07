@@ -44,7 +44,7 @@ const Organizers = () => {
 
         <Box sx={{ flexGrow: 1 }} ml='auto' mr='auto'>
           <Grid container spacing={3}
-            sx={{ maxWidth: 1200 }}
+            sx={{ maxWidth: '100%' }}
             style={{
               width: '100%',
               paddingRight: '25px'
@@ -66,7 +66,7 @@ const Organizers = () => {
 
         {/* Search Bar */}
         <Box sx={{ flexGrow: 1 }} ml='auto' mr='auto'>
-          <Grid container spacing={3} sx={{ maxWidth: 1200 }}
+          <Grid container spacing={3} sx={{ maxWidth: '100%' }}
             style={{ width: '100%' }}
             ml='auto' mr='auto' mt='50px' mb='10px'>
 

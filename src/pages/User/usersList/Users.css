@@ -2,7 +2,7 @@
 .userList_header {
     width: 100%;
     height: 7rem;
-    background-color: #6BDCFC;
+    background-color: #6bdcfc;
     margin-bottom: 2rem;
     padding-left: 6rem;
     position: relative;
@@ -23,7 +23,6 @@
 }
 
 .userList_header h1:before {
-
     content: "";
     position: absolute;
     width: 6px;
@@ -37,10 +36,10 @@
 /* end header */
 
 .userList-viewMore_option a {
-    color: #6BDCFC;
+    color: #6bdcfc;
     margin: 0;
     font-weight: 500;
-    font-size: .875rem;
+    font-size: 0.875rem;
     line-height: 1.4;
 }
 
@@ -52,27 +51,22 @@
     bottom: 4px;
 }
 
-
-
 .userList-user_card {
-
     height: 6rem;
     /* border: 1px solid #6BDCFC; */
     box-shadow: rgb(60 64 67 / 30%) 0px 0px 0 0px, rgb(60 65 67 / 15%) 10px 3px 11px 4px;
-    border-bottom: 5px solid #6BDCFC;
-    border-right: 5px solid #6BDCFC;
+    border-bottom: 5px solid #6bdcfc;
+    border-right: 5px solid #6bdcfc;
     border-radius: 9px;
     padding-top: 4px;
     padding-left: 4px;
     display: flex;
     position: relative;
-
 }
 
 .userList-userImage {
     width: 5rem;
     flex-direction: column;
-
 }
 
 .userList-user_name {
@@ -94,21 +88,19 @@
 /* search bar */
 .userList-searchBar {
     height: 3rem;
-    border: 1px solid #6BDCFC;
+    border: 1px solid #6bdcfc;
     margin-bottom: 2rem;
     position: relative;
-    ;
 }
 
 .userList-search_icon {
     width: 3rem;
     padding: 8px;
-    border-left: 1px solid #6BDCFC;
+    border-left: 1px solid #6bdcfc;
     position: absolute;
     right: -1px;
     height: 3rem;
     top: 0;
-
 }
 
 .userList-search_input {
@@ -123,14 +115,20 @@
     font-size: 17px;
 }
 
-@media (min-width:600px) and (max-width:768px) {
+.userList-search_input input:focus {
+    outline: none;
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
     .userList-search_input {
         width: 147px;
     }
 }
 
-@media (max-width:598px) {
-
+@media (max-width: 598px) {
+    .userList_header{
+        padding-left: 5rem;
+    }
     .userList-search_input {
         width: 100%;
     }
@@ -139,17 +137,19 @@
         background-color: #ffff;
     }
 
-    .userList-search_icon {}
+    .userList-search_icon {
+        border-bottom: 1px solid #6bdcfc;
+        border-right: 1px solid #6bdcfc;
+    }
 
     .userList_header h1 {
         font-size: 36px;
         padding-top: 1rem;
     }
 }
-.main_userList{
+.main_userList {
     margin-bottom: 3rem;
 }
-.userList-viewMore_option a:hover{
-    color:#6BDCFC !important;
-    
+.userList-viewMore_option a:hover {
+    color: #6bdcfc !important;
 }

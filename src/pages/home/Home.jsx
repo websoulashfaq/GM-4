@@ -173,20 +173,23 @@ const Home = () => {
                   <span>|</span>
                   <h1> Real Time Data</h1>
                 </div>
-                <ResponsiveContainer width="100%" aspect={2}>
-                  <LineChart data={pdata} margin={{ right: 50 }}>
-                    <CartesianGrid />
-                    <XAxis dataKey="name"
-                      interval={'preserveEnd'} />
-                    <YAxis></YAxis>
-                    <Legend />
-                    <Tooltip />
-                    <Line dataKey="users"
-                      stroke="black" activeDot={{ r: 8 }} />
-                    <Line dataKey="org"
-                      stroke="red" activeDot={{ r: 8 }} />
-                  </LineChart>
-                </ResponsiveContainer>
+                <div className="admin_home_graph">
+                  <ResponsiveContainer width="100%" aspect={2}>
+                    <LineChart data={pdata} margin={{ right: 50 }}>
+                      <CartesianGrid />
+                      <XAxis dataKey="name"
+                        interval={'preserveEnd'} />
+                      <YAxis></YAxis>
+                      <Legend />
+                      <Tooltip />
+                      <Line dataKey="users"
+                        stroke="black" activeDot={{ r: 8 }} />
+                      <Line dataKey="org"
+                        stroke="red" activeDot={{ r: 8 }} />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+
               </div>
             </Container>
 
