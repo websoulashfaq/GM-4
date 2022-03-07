@@ -121,11 +121,14 @@ body{
 #adminep-modal-description{
     display: flex;
     flex-direction: column;
-    margin-top: -2rem;
+    
+    
 }
 
 .adminep-modal_box{
     border: none !important;
+    height: 12rem!important;
+   
     
 }
 
@@ -146,8 +149,8 @@ body{
 
     }
     .adminep-button_area button{
-        margin-left: 128px;
-        margin-top: -2rem;
+        margin-left: 120px;
+        margin-top: -1rem;
        
     }
 }
@@ -168,8 +171,8 @@ body{
         margin-right: 20px;
     }
     .adminep-button_area button{
-        margin-left: 130px;
-        margin-top: -2rem;
+        margin-left: 120px;
+        margin-top: -1rem;
     }
     
 }
