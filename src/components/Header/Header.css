@@ -7,11 +7,13 @@
   margin-left: 0px;
   cursor: pointer;
 }
-.headerlogoorg img{
+.headerlogoorg img {
   width: 50px;
   height: 50px;
   object-fit: cover;
 }
+
+
 @media (max-width: 640px) {
   .headerlogoorg {
     width: 45px;
@@ -48,5 +50,61 @@
 @media (max-width: 640px) {
   #header-searchbarorg {
     width: 20ch;
+  }
+}
+
+@media (min-width: 899px) and (max-width: 1100px) {
+     
+  #admin_header_serchIcon{
+      width:70%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+     
+  #admin_header_serchIcon{
+      /* margin-left: 50px; */
+      width:70%;
+  }
+  
+
+} 
+
+@media (min-width: 500px) and (max-width: 768px) {
+     
+  #admin_header_serchIcon{
+      margin-left: 80%;
+      width:60%;
+  }
+  
+  #header-searchbarorg{
+        width:50%;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 500px) {
+     
+  #admin_header_serchIcon{
+      margin-left: 75%;
+      width:50%;
+  }
+  
+  #header-searchbarorg{
+        width:50%;
+  }
+}
+
+@media (min-width: 280px) and (max-width: 400px) {
+     
+  #admin_header_serchIcon{
+      margin-left: 65%;
+      width:50%;
+  }
+  
+  #admin_header_serchInput{
+      margin-left:-15%;
+  }
+  #header-searchbarorg{
+        width:40%;
   }
 }
