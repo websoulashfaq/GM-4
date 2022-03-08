@@ -108,13 +108,13 @@
 }
 @media  (max-width:600px){
     .allowedPaidlist_container th{
-        font-size: 12px !important;
-        font-weight: 700;
+        font-size: 13px !important;
+        /* font-weight: 700; */
     }
     .allowedPaidlist_container td{
         font-size: 10px;
         color: #4d4d4d;
-        font-weight: 700 !important;
+        /* font-weight: 700 !important; */
     }
     .allowedPaidlist_container button{
         font-size: 10px;
@@ -122,6 +122,8 @@
     }
     .allowedPaidlist_emptyheadingdiv{
         margin-left: 3.8rem;
+        height: 2.5rem;
+        margin-top: 5px;
     }
 }
 @media  (max-width:450px){
@@ -133,5 +135,8 @@
 @media (max-width:390px) {
     .allowedPaidlist_headding h1{
         font-size: 18px;
+    }
+    .allowedPaidlist_emptyheadingdiv{
+        height: 2.5rem;
     }
 }

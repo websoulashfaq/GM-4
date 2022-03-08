@@ -94,13 +94,13 @@
 
 @media only screen and (max-width: 500px) {
   .idp-head-bg h1{
-      font-size: 35px;
+      font-size: 30px;
       top: 16px;
       left: -24px;
 
   }
   .idp-head-bg h1::before{
-      top: 9px;
+      top: 2px;
       height: 33px;
       left: -25px;
   }

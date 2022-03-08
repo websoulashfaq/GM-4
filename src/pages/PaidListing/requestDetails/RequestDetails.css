@@ -353,6 +353,9 @@
     .requestDetailsPaymentImage_heading h3{
         font-size: 16px;
     }
+    .requestDetails_emptyheadingdiv{
+        height: 2.5rem;
+    }
 }
 @media (max-width:370px) {
     .requestDetails_modal_box{

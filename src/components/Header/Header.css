@@ -14,17 +14,17 @@
 }
 @media (max-width: 640px) {
   .headerlogoorg {
-    font-family: "Courgette", cursive;
-    color: black;
-    font-size: 30px;
-    font-weight: 400;
-    width: 100px;
-    /* margin-left: -10px; */
-  }
-  .headerlogoorg{
     width: 45px;
-    height: 45px;
+    height: 100%;
     object-fit: cover;
+  }
+}
+@media (max-width: 400px) {
+  .headerlogoorg {
+    width: 40px;
+    height:100%;
+    object-fit: cover;
+    margin-right: 15px;
   }
 }
 #Apporg {
