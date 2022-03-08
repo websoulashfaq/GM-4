@@ -250,10 +250,10 @@ const Header = () => {
               <h2 onClick={() => navigate('/')} className='headerlogoorg'> <img  src={gm4logo} alt=""/> </h2>
             </Typography>
             <Search id="header-searchbarorg">
-              <SearchIconWrapper>
+              <SearchIconWrapper id='admin_header_serchIcon'>
                 <SearchIcon sx={{ display: "right", color: "rgb(102 98 98)" }} />
               </SearchIconWrapper>
-              <StyledInputBase
+              <StyledInputBase id='admin_header_serchInput'
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
               />
