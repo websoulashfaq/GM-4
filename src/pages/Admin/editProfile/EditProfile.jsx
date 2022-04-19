@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './EditProfile.css'
 import { autocompleteClasses, Badge, Button } from '@mui/material';
 import { Avatar } from '@mui/material';
 import { IconButton } from '@mui/material';
-import { useState } from 'react';
 import CameraAltTwoToneIcon from '@mui/icons-material/CameraAltTwoTone';
 import { useFormik } from 'formik';
 import { Modal } from '@mui/material';
@@ -99,6 +99,36 @@ const EditProfile = () => {
     }
   });
 
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState();
+  const [pic,setPic] = useState();
+
+  const getUserInfo = async () => {
+    const adminId = localStorage.getItem('adminId');
+    let url = `https://gm4-server.herokuapp.com/api/admin/read/profile/${adminId}`;
+    let options = {
+      method: 'GET',
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setUsername(response.data.username);
+      setEmail(response.data.email);
+      setMobile(response.data.mobile);
+
+    } catch (error) {
+      alert(error.response.data.error);
+    }
+  }
+
+  useEffect(() => {
+    getUserInfo();
+  }, [])
 
 
   return (
@@ -126,7 +156,7 @@ const EditProfile = () => {
               <p>
                 <center>
                   <input type="file" onChange={handleChange} id="upload" accept="image/*" name="Photoupload"
-                    style={{ display: "none" }} {...formik.getFieldProps("Photoupload")} required="" />
+                    style={{ display: "none" }} {...formik.getFieldProps("Photoupload")} required=""  />
                   <label htmlFor="upload">
 
                     <IconButton color="primary" aria-label="upload picture" component="span" >
@@ -167,7 +197,7 @@ const EditProfile = () => {
               {/*Edit Profile input field */}
 
               <input class="uk-input" type="text" name='Username' placeholder='Enter username'
-                {...formik.getFieldProps("Username")} required="" />
+                {...formik.getFieldProps("Username")} required="" value={username && username} />
 
               {formik.errors.Username ? <span style={{ color: 'red', float: 'left', fontSize: '12px', fontWeight: '700' }}>
                 {formik.errors.Username}</span> : null}
@@ -176,7 +206,7 @@ const EditProfile = () => {
 
             <div class="uk-margin">
               <input class="uk-input" type="email" name='EmailId' placeholder='Enter email id'
-                {...formik.getFieldProps("EmailId")} required="" />
+                {...formik.getFieldProps("EmailId")} required="" value={email && email} />
 
               {formik.errors.EmailId ?
                 <span style={{ color: 'red', fontSize: '12px', fontWeight: '700', float: 'left' }}>
@@ -186,7 +216,7 @@ const EditProfile = () => {
             <div class="uk-margin">
               <input class="uk-input" type="text" name='Phonenumber' placeholder='Enter phone number' minLength={10}
                 {...formik.getFieldProps("Phonenumber")}
-                required="" pattern="[789][0-9]{9}" />
+                required="" pattern="[789][0-9]{9}" value={mobile && mobile} />
               {formik.errors.Phonenumber ?
                 <span style={{ color: 'red', fontSize: '12px', fontWeight: '700', float: 'left' }}>{formik.errors.Phonenumber}</span> : null}
 
@@ -211,7 +241,7 @@ const EditProfile = () => {
               <Typography id="adminep-modal-description" className='rules_modal'   >
 
                 <h3>Profile updated</h3>
-                <span style={{letterSpacing:'none'}}>Your profile is updates Successfully!</span>
+                <span style={{ letterSpacing: 'none' }}>Your profile is updates Successfully!</span>
                 <br />
 
                 <div className='adminep-button_area'>

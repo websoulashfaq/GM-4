@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import './Profile.css'
 import { Link } from 'react-router-dom'
 import adminprofilepic from './../../../assets/images/Admin-profile/adminprofilepic.jpg';
@@ -14,6 +15,41 @@ import Footer from '../../../components/Footer/Footer'
 
 const Profile = () => {
 
+    const [userInfo, setUserInfo] = useState({
+        name: "",
+        username: "",
+        email: "",
+        mobile: "",
+        pic: ""
+    });
+
+    const getUserInfo = async () => {
+        const adminId = localStorage.getItem('adminId');
+        let url = `https://gm4-server.herokuapp.com/api/admin/read/profile/${adminId}`;
+        let options = {
+            method: 'GET',
+            url: url,
+            headers: {
+                'Content-Type': "Application/json",
+                'Authorization': "Bearer " + localStorage.getItem("token")
+            },
+        }
+        try {
+            const response = await axios(options);
+            setUserInfo({
+                name: response.data.name,
+                username: response.data.username,
+                email: response.data.email,
+                mobile: response.data.mobile
+            })
+        } catch (error) {
+            alert(error.response.data.error);
+        }
+    }
+
+    useEffect(() => {
+        getUserInfo();
+    }, [])
     return (
 
 
@@ -37,13 +73,13 @@ const Profile = () => {
                             </Card>
                             <Card className="Adminprofiledata" style={{ backgroundColor: 'transparent' }}>
                                 <center  >
-                                    <h2>Full Name</h2>
-                                    <h4>@User name</h4>
+                                    <h2>{userInfo.name ? userInfo.name : "Full Name"}</h2>
+                                    <h4>{userInfo.username ? userInfo.username : "@User name"}</h4>
                                     <br />
                                     <p><EmailIcon fontSize='small' />
-                                        {''}{''}  abcd@gmail.com</p>
+                                        {''}{''}  {userInfo.email ? userInfo.email : "abcd@gmail.com"}</p>
                                     <p><LocalPhoneIcon fontSize='small' />
-                                        {''} {''}  {9876543210}</p>
+                                        {''} {''}  {userInfo.mobile ? userInfo.mobile : "********"}</p>
 
                                     <br />
 

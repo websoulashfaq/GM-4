@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../../components/Footer/Footer'
 import Header from '../../components/Header/Header'
 import SideNav from '../../components/SideNav/SideNav'
 import './Home.css'
+import axios from 'axios';
 import {
   LineChart,
   ResponsiveContainer,
@@ -35,6 +36,77 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Home = () => {
+  const [totalUser, setTotalUser] = useState(null)
+  const [totalOrgaizer, setTotalOrganizer] = useState(null)
+  const [totalPaidlist, setTotalPaidlist] = useState(null)
+
+  //getTotal users
+  const getTotalUsersCound = async () => {
+    const adminId = localStorage.getItem('adminId');
+    let url = `https://gm4-server.herokuapp.com/api/admin/count/users/${adminId}`;
+    let options = {
+      method: 'GET',
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setTotalUser(response.data.count)
+    } catch (error) {
+      alert(error.response.data.error);
+    }
+  }
+
+  //getTotalorganizers
+  const getOrganizersCount = async () => {
+    const adminId = localStorage.getItem('adminId');
+    let url = `https://gm4-server.herokuapp.com/api/admin/count/organisers/${adminId}`;
+    let options = {
+      method: 'GET',
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setTotalOrganizer(response.data.count)
+    } catch (error) {
+      alert(error.response.data.error);
+    }
+  }
+
+  //get All Aproved Paid List
+  const getAllApprovedlistCount = async () => {
+    const adminId = localStorage.getItem('adminId');
+    let url = `https://gm4-server.herokuapp.com/api/admin/count/paidlists/${adminId}`;
+    let options = {
+      method: 'GET',
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setTotalPaidlist(response.data.count)
+    } catch (error) {
+      alert(error.response.data.error);
+    }
+  }
+
+
+  useEffect(() => {
+    getTotalUsersCound();
+    getAllApprovedlistCount();
+    getOrganizersCount();
+  }, [])
+
   // Sample chart data
   const pdata = [
     {
@@ -125,7 +197,7 @@ const Home = () => {
                       <div className="admin_home_card_content">
                         <div className="admin_home_card_details">
                           <h4>All Organizers</h4>
-                          <h3>13</h3>
+                          <h3>{totalOrgaizer ? totalOrgaizer : 0}</h3>
                           <Link className='admin_home_link' to="/admin/organizer">more details ?</Link>
                         </div>
                         <div className="admin_home_card_icon">
@@ -140,7 +212,7 @@ const Home = () => {
                       <div className="admin_home_card_content">
                         <div className="admin_home_card_details">
                           <h4>All Users</h4>
-                          <h3>13</h3>
+                          <h3>{totalUser ? totalUser : 0}</h3>
                           <Link className='admin_home_link' to="/admin/userslist">more details ?</Link>
                         </div>
                         <div className="admin_home_card_icon">
@@ -155,7 +227,7 @@ const Home = () => {
                       <div className="admin_home_card_content">
                         <div className="admin_home_card_details">
                           <h4>Total paid listing</h4>
-                          <h3>13</h3>
+                          <h3>{totalPaidlist ? totalPaidlist : 0}</h3>
                           <Link className='admin_home_link' to="/admin/allowed/paidlist">more details ?</Link>
                         </div>
                         <div className="admin_home_card_icon">

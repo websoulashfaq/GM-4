@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './ChangePassword.css'
+import axios from 'axios';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
@@ -36,10 +37,8 @@ const ChangePassword = () => {
 
   const formSchema = Yup.object({
 
-    oldpass: Yup.string()
-      .required('**Old password required')
-      .min(8, 'Password must have atleast 8 characters'),
-
+    email: Yup.string()
+      .required('**Enter Email Address'),
 
     password: Yup
       .string()
@@ -58,11 +57,60 @@ const ChangePassword = () => {
 
   const { errors } = formState
 
-  function onFormSubmit(data) {
-    console.log(JSON.stringify(data, null, 8))
-    handleOpen();
+  function onFormSubmit(data) { 
+    let url = `https://gm4-server.herokuapp.com/api/admin/change/password`;
+    let options = {
+      method: 'PUT',
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+      data: {
+        email: data.email && data.email,
+        password: data.password && data.password,
+        newpassword: data.passwordConfirm && data.passwordConfirm
+      }
+    }
+    try {
+      axios(options).then((res) => {
+        console.log(res);
+      })
+
+
+    } catch (error) {
+      alert(error.response.data.error);
+    }
+
+    // handleOpen();
     return false
   }
+
+  const [email, setEmail] = useState("");
+
+  const getUserInfo = async () => {
+    const adminId = localStorage.getItem('adminId');
+    let url = `https://gm4-server.herokuapp.com/api/admin/read/profile/${adminId}`;
+    let options = {
+      method: 'GET',
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setEmail(response.data.email)
+
+    } catch (error) {
+      alert(error.response.data.error);
+    }
+  }
+
+  useEffect(() => {
+    getUserInfo();
+  }, [])
 
 
   return (
@@ -84,8 +132,8 @@ const ChangePassword = () => {
 
             <div class="uk-margin">
               <input class="uk-input {`form-control ${
-                  errors.password ? 'is-invalid' : ''}`} "  name='oldpass' type="password" placeholder="Old Password" required="" minLength={8}
-                {...register('oldpass')} />
+                  errors.password ? 'is-invalid' : ''}`} "  name='email' value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="Enter Email" required=""
+                {...register('email')} />
             </div>
 
             <div className="invalid-feedback" >
@@ -142,7 +190,7 @@ const ChangePassword = () => {
 
                 <h3>Password changed</h3>
 
-                <span style={{letterSpacing:'none'}}>Your password changed Successfully!</span>
+                <span style={{ letterSpacing: 'none' }}>Your password changed Successfully!</span>
                 <br />
 
               </Typography>
