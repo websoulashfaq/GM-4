@@ -22,9 +22,9 @@ const Profile = () => {
         mobile: "",
         pic: ""
     });
+    const adminId = localStorage.getItem('adminId');
 
     const getUserInfo = async () => {
-        const adminId = localStorage.getItem('adminId');
         let url = `https://gm4-server.herokuapp.com/api/admin/read/profile/${adminId}`;
         let options = {
             method: 'GET',
@@ -69,7 +69,7 @@ const Profile = () => {
 
                         <div className="Adminprofile">
                             <Card className="Adminprofilepic">
-                                <img src={adminprofilepic} alt="" />
+                                <img src={`https://gm4-server.herokuapp.com/api/admin/profile/photo/${adminId}`} alt="photo" />
                             </Card>
                             <Card className="Adminprofiledata" style={{ backgroundColor: 'transparent' }}>
                                 <center  >

@@ -16,19 +16,19 @@ const Login = () => {
       method: 'POST',
       url: url,
       data: {
-        emailMobile: data.email,
+        email: data.email,
         password: data.password
       }
     }
     try {
-      const response = await axios(options); 
+      const response = await axios(options);
       localStorage.setItem("adminId", response.data.admin._id);
       localStorage.setItem("adminName", response.data.admin.name);
       localStorage.setItem("token", response.data.token);
       alert(response.data.message);
       navigate('/')
     } catch (error) {
-      console.log("Backend Error is ", error.response.data.error);
+      alert(error.response.data.error);
     }
     reset();
   };
@@ -44,7 +44,7 @@ const Login = () => {
             <div className="row">
               {/* icon */}
               <i className="fa fa-user" />
-              <input type="number" placeholder="Email or Phone" name='email'  {...register("email", { required: "** Email is Required" })} autoComplete='off' />   {errors.email && (<span className='errormsgleft4-1'>{errors.email.message}</span>)}
+              <input type="email" placeholder="Email" name='email'  {...register("email", { required: "** Email is Required" })} autoComplete='off' />   {errors.email && (<span className='errormsgleft4-1'>{errors.email.message}</span>)}
             </div>
             <div className="row">
               {/* icon */}

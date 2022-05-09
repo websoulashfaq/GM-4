@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './UserDetails.css'
-import { Link } from 'react-router-dom'
-
+import { Link, useParams } from 'react-router-dom'
+import axios from 'axios';
 
 
 //meterail ui
@@ -67,6 +67,162 @@ const UserDetails = () => {
   //navigate
   const navigate = useNavigate();
 
+  const [userInfo, setUserInfo] = useState({});
+  const [bookedTounemets, setBookedTounemets] = useState();
+  const [attendedTornements, setAttendedTornements] = useState()
+  const [attendedScrims, setAttendedScrims] = useState()
+  const [totalMatch, setTotalMatch] = useState()
+
+  const { id } = useParams();
+  const adminId = localStorage.getItem("adminId")
+
+  //black user
+  const blockUserAPI = (data) => {
+    return axios({
+      method: "PUT",
+      url: `https://gm4-server.herokuapp.com/api/admin/update/user/${id}/${adminId}`,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      },
+      data: data
+    })
+      .then((res) => {
+        return res
+      })
+      .catch((err) => {
+        console.log(err)
+        return err
+      })
+  }
+
+  const blockUser = () => {
+    blockUserAPI({ status: "Blocked" })
+      .then((res) => {
+        console.log(res)
+        handleClose();
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  const activeUser = () => {
+    blockUserAPI({ status: "Active" })
+      .then((res) => {
+        console.log(res)
+        handleClose();
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+
+
+  //get total match Attended
+  const getTotalMatchAttended = async () => {
+    let url = `https://gm4-server.herokuapp.com/api/admin/count/matches/user/${id}/${adminId}`;
+    const options = {
+      method: "GET",
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setTotalMatch(response.data)
+    } catch (error) {
+      alert(error.response.data.error)
+    }
+  }
+
+
+  //get attended scrims
+  const getAttendedScrims = async () => {
+    let url = `https://gm4-server.herokuapp.com/api/admin/count/scrims/user/${id}/${adminId}`;
+    const options = {
+      method: "GET",
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setAttendedScrims(response.data)
+    } catch (error) {
+      alert(error.response.data.error)
+    }
+  }
+
+  //get attended tournements
+  const getAttendedTournements = async () => {
+    let url = `https://gm4-server.herokuapp.com/api/admin/count/tournaments/user/${id}/${adminId}`;
+    const options = {
+      method: "GET",
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setAttendedTornements(response.data)
+    } catch (error) {
+      alert(error.response.data.error)
+    }
+  }
+
+  //get user booked tournememnts
+  const getBookedTounements = async () => {
+    let url = `https://gm4-server.herokuapp.com/api/admin/view/booked/tournaments/${id}/${adminId}`;
+    const options = {
+      method: "GET",
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setBookedTounemets(response.data)
+    } catch (error) {
+      alert(error.response.data.error)
+    }
+  }
+
+  //get user profile
+  const getUserInfo = async () => {
+    let url = `https://gm4-server.herokuapp.com/api/admin/read/user/profile/${id}/${adminId}`;
+    const options = {
+      method: "GET",
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setUserInfo(response.data)
+    } catch (error) {
+      alert(error.response.data.error);
+    }
+  }
+
+  useEffect(() => {
+    getUserInfo();
+    getBookedTounements();
+    getAttendedTournements();
+    getAttendedScrims();
+    getTotalMatchAttended();
+  }, [userInfo])
+
   return (
     <div>
       <Header />
@@ -86,15 +242,21 @@ const UserDetails = () => {
                   <Grid xl={5} className="userdetails-userImgeDetails">
                     {/* user image */}
                     <div className='userdetails-user_img'>
-                      <img src={user} alt="" />
+                      <img src={`https://gm4-server.herokuapp.com/api/admin/get/image/user/${id}/${adminId}`} alt="userPhoto" />
                     </div>
                     {/* end user image */}
 
                     {/* action buttons */}
                     <div className='userdetials-user_buttons'>
-                      <button style={{ backgroundColor: '#FF0000' }} onClick={handleOpen} >Block User</button>
+                      {
+                        userInfo && userInfo.status === "Active" ? (
+                          <button style={{ backgroundColor: '#FF0000' }} onClick={handleOpen} >Active now</button>
+                        ) : (
+                          <button style={{ backgroundColor: '#FF0000' }} onClick={handleOpen} >Blocked</button>
+                        )
+                      }
                       <button style={{ backgroundColor: '#FF0000' }} onClick={ScamOpenn}>Scam</button>
-                      <button onClick={(() => { navigate('/admin/usertournament'); })}>Booked Tournaments</button>
+                      <Link to={`/admin/usertournament/${userInfo._id}`} className="tournement_link">Booked Tournaments</Link>
                     </div>
                     {/* end aactions buttons section */}
 
@@ -110,16 +272,22 @@ const UserDetails = () => {
                     >
                       <Box sx={style} className="modal_User">
                         <Typography id="modal-modal-title" variant="h6" component="h2">
-                          Block user
+                          {""}
                         </Typography>
                         <hr />
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                          Are you sure you want to Block this user
+                          Are you sure you want to {userInfo && userInfo.status === "Active" ? "Block" : "Active"} this user
                         </Typography>
                         <hr />
                         <div className='userdetails-modal_buttons'>
                           <button className='modalNo' onClick={handleClose}>No</button>
-                          <button className='modalYess'>Yes</button>
+                          {
+                            userInfo && userInfo.status === "Active" ? (
+                              <button onClick={blockUser} className='modalYess'>Block</button>
+                            ) : (
+                              <button onClick={activeUser} className='modalYess'>Active</button>
+                            )
+                          }
                         </div>
                       </Box>
                     </Modal>
@@ -158,7 +326,7 @@ const UserDetails = () => {
                   <Grid xl={7} className="userdetails-user_descripion">
                     <div className='userdetail-user-name-andButton'>
                       {/* user name */}
-                      <h1>Jhone Alexander</h1>
+                      <h1> {userInfo && userInfo.firstName} {userInfo && userInfo.lastName}</h1>
                       {/* user name */}
                     </div>
                     {/* user location */}
@@ -180,7 +348,7 @@ const UserDetails = () => {
                       <tbody>
                         <tr>
                           <td>Total tournaments attended</td>
-                          <td>10</td>
+                          <td>{attendedTornements && attendedTornements}</td>
                         </tr>
                         <tr>
                           <td>Number of Tournament Own </td>
@@ -188,15 +356,15 @@ const UserDetails = () => {
                         </tr>
                         <tr>
                           <td>Total match attended</td>
-                          <td>11</td>
+                          <td>{totalMatch && totalMatch}</td>
                         </tr>
                         <tr>
                           <td>Total Scrims attended</td>
-                          <td>29</td>
+                          <td>{attendedScrims && attendedScrims}</td>
                         </tr>
                         <tr>
                           <td>Booked Tournaments</td>
-                          <td>4</td>
+                          <td>{bookedTounemets && bookedTounemets}</td>
                         </tr>
                       </tbody>
                     </table>

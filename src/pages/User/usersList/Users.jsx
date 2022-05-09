@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Users.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Container } from '@mui/material';
-import content from './content';
 
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
+import user4 from '../../../assets/userList/user4.jpg'
+
 
 
 //card meterail ui
@@ -24,6 +26,31 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const Users = () => {
+  const [userList, setUserList] = useState([])
+
+  const getAllUsers = async () => {
+    let adminId = localStorage.getItem('adminId')
+    let url = `https://gm4-server.herokuapp.com/api/admin/list/users/${adminId}`;
+    const options = {
+      method: "GET",
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setUserList(response.data);
+    } catch (error) {
+      alert(error.response.data.error)
+    }
+  }
+
+  useEffect(() => {
+    getAllUsers();
+  }, [])
+
   return (
     <div>
       <Header />
@@ -54,19 +81,19 @@ const Users = () => {
           <Grid container spacing={2}>
 
             {/* userLIst data  */}
-            {content.data.map((user, key) => {
+            {userList.map((user) => {
               return (
-                <Grid item xl={3} xs={12} lg={3} md={4} sm={6} key={key}>
+                <Grid item xl={3} xs={12} lg={3} md={4} sm={6} key={user._id}>
                   <div className='userList-user_card'>
                     <div className='userList-userImage'>
-                      <img src={user.Image} alt="" />
+                      <img src={`https://gm4-server.herokuapp.com/api/admin/get/image/user/${user._id}/${localStorage.getItem("adminId")}`} alt="" />
                     </div>
                     <div className='userList-user_name'>
-                      <h4>{user.name}</h4>
+                      <h4>{user.firstName}</h4>
                       <h5>{user.email}</h5>
                     </div>
                     <div className='userList-viewMore_option'>
-                      <Link to={"/admin/userdetails"}>More Details</Link>
+                      <Link to={`/admin/userdetails/${user._id}`}>More Details</Link>
                     </div>
                   </div>
                 </Grid>

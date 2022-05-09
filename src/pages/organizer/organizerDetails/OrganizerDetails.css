@@ -90,6 +90,15 @@
 .uk-table td{
     font-weight: 800;
 }
+.block{
+    background-color: rgb(92, 82, 82);
+    color: #6BDCFC;
+}
+.active{
+    background-color: rgb(92, 82, 82);
+    color: #6BDCFC;
+
+}
 
 @media (max-width:600px) {
     .orgDetails{

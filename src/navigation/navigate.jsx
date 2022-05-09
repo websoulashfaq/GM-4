@@ -30,13 +30,13 @@ const navigate = () => {
                     <Route path='/' element={<Home />} />
                     <Route path='/admin/allowed/paidlist' element={<AllowedPaidList />} />
                     <Route path='/admin/request/paidlist' element={<RequestPaidList />} />
-                    <Route path='/admin/request/details' element={<RequestDetails />} />
+                    <Route path='/admin/request/details/:id' element={<RequestDetails />} />
                     <Route path='/admin/action' element={<Delete />} />
                     <Route path='/admin/notification' element={<Notification />} />
-                    <Route path='/admin/organizerdetails' element={<OrganizerDetails />} />
+                    <Route path='/admin/organizerdetails/:id' element={<OrganizerDetails />} />
                     <Route path='/admin/organizer' element={<Organizers />} />
-                    <Route path='/admin/userdetails' element={<UserDetails />} />
-                    <Route path='/admin/usertournament' element={<UserTournaments />} />
+                    <Route path='/admin/userdetails/:id' element={<UserDetails />} />
+                    <Route path='/admin/usertournament/:id' element={<UserTournaments />} />
                     <Route path='/admin/userslist' element={<UsersList />} />
                     <Route path='/admin/changepassword' element={<ChangePassword />} />
                     <Route path='/admin/forgotpassword' element={<ForgotPassword />} />

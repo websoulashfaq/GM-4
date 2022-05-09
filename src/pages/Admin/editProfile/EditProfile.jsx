@@ -10,6 +10,7 @@ import { Modal } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-dom'
 
 import Header from '../../../components/Header/Header'
 import Footer from '../../../components/Footer/Footer'
@@ -21,6 +22,9 @@ const EditProfile = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
+  const handleNavigate = () => navigate('/admin/profile');
+
 
   {/*Modal style */ }
 
@@ -37,72 +41,101 @@ const EditProfile = () => {
     p: 4,
   };
 
-  {/*File upload event */ }
-
-  const [file, setFile] = useState(null);
-  const handleChange = function loadFile(event) {
-    if (event.target.files.length > 0) {
-      const file = URL.createObjectURL(event.target.files[0]);
-      setFile(file);
-    }
-  };
-
-
   {/*Form Validation section*/ }
 
 
-  const formik = useFormik({
+  // const formik = useFormik({
 
-    initialValues: {
+  //   initialValues: {
 
-      Username: 'Username',
+  //     username: ' ',
 
-      EmailId: 'abcd@gmail.com',
+  //     email: '',
 
-      Phonenumber: '9876543210'
+  //     mobile: ''
 
-    },
+  //   },
 
-    validationSchema: yup.object({
+  //   validationSchema: yup.object({
 
-      Photoupload: yup.mixed()
+  //     Photoupload: yup.mixed()
 
-        .required('**Profile Photo required..'),
+  //       .required('**Profile Photo required..'),
 
-      Username: yup.string()
+  //     username: yup.string()
 
-        .max(20, 'Name should not exceed 20 Characters')
+  //       .max(20, 'Name should not exceed 20 Characters')
 
-        .required(' **User Name required'),
-
-
-      EmailId: yup.string()
-
-        .email('Invalid email address')
-
-        .required('**Email Id required'),
-
-      Phonenumber: yup.string()
-
-        .min(10, '')
-
-        .required('**Phone number required'),
+  //       .required(' **User Name required'),
 
 
-    }),
+  //     email: yup.string()
 
-    onSubmit: values => {
+  //       .email('Invalid email address')
 
-      console.log(JSON.stringify(values));
+  //       .required('**Email Id required'),
 
-      handleOpen();
-    }
-  });
+  //     mobile: yup.string()
+
+  //       .min(10, '')
+
+  //       .required('**Phone number required'),
+
+
+  //   }),
+
+  //   onSubmit: values => {
+
+  //     console.log(values)
+
+  //     // handleOpen();
+  //   }
+  // });
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState();
-  const [pic,setPic] = useState();
+  const [file, setFile] = useState(null);
+  const [isFilePicked, setIsFilePicked] = useState(false);
+
+
+  {/*File upload event */ }
+
+  const handleImageChange = (event) => {
+    setFile(event.target.files[0]);
+    setIsFilePicked(true);
+  };
+
+  const updateAdmin = async (event) => {
+    event.preventDefault();
+    const formdata = new FormData();
+    formdata.append("username", username);
+    formdata.append("email", email);
+    formdata.append("mobile", mobile);
+    if (isFilePicked) {
+      formdata.append("photo", file)
+    }
+
+    let url = `https://gm4-server.herokuapp.com/api/admin/edit/profile/${localStorage.getItem("adminId")}`;
+    const options = {
+      method: "PUT",
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+      data: formdata
+    }
+    try {
+      axios(options).then((res) => {
+        console.log(res.data)
+        handleOpen()
+      })
+    } catch (error) {
+      alert(error.response.data.error.message);
+      console.log(error.response.data)
+    }
+  }
 
   const getUserInfo = async () => {
     const adminId = localStorage.getItem('adminId');
@@ -131,6 +164,7 @@ const EditProfile = () => {
   }, [])
 
 
+
   return (
 
     <div className='admin-editprofile'>
@@ -145,7 +179,7 @@ const EditProfile = () => {
       {/*Edit Profile page form  */}
 
       <div>
-        <form className='AdminEditprofile-Form' onSubmit={formik.handleSubmit} >
+        <form className='AdminEditprofile-Form' onSubmit={updateAdmin} >
 
           <h2 class="admin-editprofile-head">Edit profile</h2>
           <fieldset className="uk-fieldset">
@@ -155,8 +189,15 @@ const EditProfile = () => {
               {/*Edit Profile Photo upload*/}
               <p>
                 <center>
-                  <input type="file" onChange={handleChange} id="upload" accept="image/*" name="Photoupload"
-                    style={{ display: "none" }} {...formik.getFieldProps("Photoupload")} required=""  />
+                  <input
+                    type="file"
+                    onChange={handleImageChange}
+                    id="upload"
+                    accept="image/*"
+                    name="file"
+                    style={{ display: "none" }}
+                    required=""
+                  />
                   <label htmlFor="upload">
 
                     <IconButton color="primary" aria-label="upload picture" component="span" >
@@ -169,7 +210,7 @@ const EditProfile = () => {
 
                         }} >
 
-                        <Avatar id="avatar" src={file}
+                        <Avatar id="avatar" src={file ? URL.createObjectURL(file) : ""}
 
                           style={{
                             width: "80px",
@@ -186,39 +227,64 @@ const EditProfile = () => {
 
                 {/*Photo upload validation */}
 
-                {formik.errors.Photoupload ?
+                {/* {formik.errors.Photoupload ?
 
                   <span style={{ color: 'red', fontSize: '12px', fontWeight: '700', }}>
-                    {formik.errors.Photoupload}</span> : null}
+                    {formik.errors.Photoupload}</span> : null} */}
 
               </p>
 
 
               {/*Edit Profile input field */}
 
-              <input class="uk-input" type="text" name='Username' placeholder='Enter username'
-                {...formik.getFieldProps("Username")} required="" value={username && username} />
+              <input
+                class="uk-input"
+                type="text"
+                name='username'
+                placeholder='Enter username'
+                // {...formik.getFieldProps("username")}
+                required=""
+                value={username && username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
 
-              {formik.errors.Username ? <span style={{ color: 'red', float: 'left', fontSize: '12px', fontWeight: '700' }}>
-                {formik.errors.Username}</span> : null}
+              {/* {formik.errors.Username ? <span style={{ color: 'red', float: 'left', fontSize: '12px', fontWeight: '700' }}>
+                {formik.errors.Username}</span> : null} */}
 
             </div>
 
             <div class="uk-margin">
-              <input class="uk-input" type="email" name='EmailId' placeholder='Enter email id'
-                {...formik.getFieldProps("EmailId")} required="" value={email && email} />
+              <input
+                class="uk-input"
+                type="email"
+                name='email'
+                placeholder='Enter email id'
+                // {...formik.getFieldProps("email")}
+                required=""
+                value={email && email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-              {formik.errors.EmailId ?
+              {/* {formik.errors.EmailId ?
                 <span style={{ color: 'red', fontSize: '12px', fontWeight: '700', float: 'left' }}>
-                  {formik.errors.EmailId}</span> : null}
+                  {formik.errors.EmailId}</span> : null} */}
             </div>
 
             <div class="uk-margin">
-              <input class="uk-input" type="text" name='Phonenumber' placeholder='Enter phone number' minLength={10}
-                {...formik.getFieldProps("Phonenumber")}
-                required="" pattern="[789][0-9]{9}" value={mobile && mobile} />
-              {formik.errors.Phonenumber ?
-                <span style={{ color: 'red', fontSize: '12px', fontWeight: '700', float: 'left' }}>{formik.errors.Phonenumber}</span> : null}
+              <input
+                class="uk-input"
+                type="text"
+                name='mobile'
+                placeholder='Enter phone number'
+                minLength={10}
+                // {...formik.getFieldProps("mobile")}
+                required=""
+                pattern="[789][0-9]{9}"
+                value={mobile && mobile}
+                onChange={(e) => setMobile(e.target.value)}
+              />
+              {/* {formik.errors.Phonenumber ?
+                <span style={{ color: 'red', fontSize: '12px', fontWeight: '700', float: 'left' }}>{formik.errors.Phonenumber}</span> : null} */}
 
             </div>
 
@@ -245,7 +311,7 @@ const EditProfile = () => {
                 <br />
 
                 <div className='adminep-button_area'>
-                  <button onClick={handleClose} className='adminep-modal_close'>Ok</button>
+                  <button onClick={handleNavigate} className='adminep-modal_close'>Ok</button>
                 </div>
 
               </Typography>

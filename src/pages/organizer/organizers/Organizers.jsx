@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Organizers.css'
 
 import { Link } from 'react-router-dom'
@@ -18,6 +18,7 @@ import OrgUser from '../../../assets/images/orguser.jpg';
 
 import Header from '../../../components/Header/Header'
 import Footer from '../../../components/Footer/Footer'
+import axios from 'axios';
 
 {/** All Organizers Card Style */ }
 const Item = styled(Paper)(({ theme }) => ({
@@ -32,6 +33,35 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const Organizers = () => {
+
+  const [organizers, setOrganizers] = useState([])
+
+  const getAllOrganizers = async () => {
+
+    const adminId = localStorage.getItem("adminId");
+    let url = `https://gm4-server.herokuapp.com/api/admin/list/organisers/${adminId}`;
+    const options = {
+      method: "GET",
+      url: url,
+      headers: {
+        'Content-Type': "Application/json",
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      },
+    }
+    try {
+      const response = await axios(options);
+      setOrganizers(response.data)
+    } catch (error) {
+      alert(error.response.data.error);
+    }
+
+  }
+
+  useEffect(() => {
+    getAllOrganizers();
+  }, [])
+
+
   return (
     <div>
       <Header />
@@ -59,10 +89,6 @@ const Organizers = () => {
             </div>
           </Grid>
         </Box>
-
-
-
-
 
         {/* Search Bar */}
         <Box sx={{ flexGrow: 1 }} ml='auto' mr='auto'>
@@ -113,141 +139,21 @@ const Organizers = () => {
           >
 
             {/** all Organizers Card */}
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img' >
-                <img src={OrgUser} />
-                <p>Reagan Banks</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Zoie Small</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Elisabeth Howe</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Elisabeth Elliott</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Yadira Lucero</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img Width='30px' src={OrgUser} />
-                <p>Cassius Bailey</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Zoie Small</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Elisabeth Howe</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Elisabeth Elliott</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Yadira Lucero</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img Width='30px' src={OrgUser} />
-                <p>Cassius Bailey</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Zoie Small</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>         </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Elisabeth Howe</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>        </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Elisabeth Elliott</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img src={OrgUser} />
-                <p>Yadira Lucero</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-            <Grid p={2} item xs={12} sm={6} md={4} xl={3}>
-              <Item className='org-img'>
-                <img Width='30px' src={OrgUser} />
-                <p>Cassius Bailey</p>
-                <Link className='org-more' to='/admin/organizerdetails'>more details?</Link>
-              </Item>
-            </Grid>
-
-
-
-
+            {
+              organizers && organizers.map((org) => {
+                return (
+                  <Grid key={org._id} p={2} item xs={12} sm={6} md={4} xl={3}>
+                    <Item className='org-img' >
+                      <img src={`https://gm4-server.herokuapp.com/api/admin/get/image/user/${org._id}/${localStorage.getItem("adminId")}`} />
+                      <p>{org.firstName}</p>
+                      <Link  className='org-more' to={`/admin/organizerdetails/${org._id}`}>more details?</Link>
+                    </Item>
+                  </Grid>
+                )
+              })
+            }
           </Grid>
         </Box>
-
-
-
       </div>
       <Footer />
     </div>

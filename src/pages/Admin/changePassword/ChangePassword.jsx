@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './ChangePassword.css'
 import axios from 'axios';
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom'
 import { Modal } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -13,7 +11,27 @@ import Footer from '../../../components/Footer/Footer'
 
 
 const ChangePassword = () => {
+  const navigate = useNavigate();
 
+  const [formValue, setFormValue] = useState({
+    email: '',
+    cPassword: "",
+    newPassword: ""
+  })
+
+  const [errField, setErrField] = useState({
+    emailErr: "",
+    passwordErr: "",
+    newPasswordErr: ""
+  })
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValue({
+      ...formValue,
+      [name]: value
+    })
+  }
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -35,58 +53,96 @@ const ChangePassword = () => {
 
   };
 
-  const formSchema = Yup.object({
+  function onFormSubmit(event) {
+    event.preventDefault();
+    if (validForm()) {
 
-    email: Yup.string()
-      .required('**Enter Email Address'),
-
-    password: Yup
-      .string()
-      .required('**New Password is required')
-      .min(8, 'Password must have atleast 8 characters'),
-
-    passwordConfirm: Yup
-      .string()
-      .required('**Confirm password required')
-      .oneOf([Yup.ref('password'), null], '**Password mismatch'),
-  })
-
-  const validationOpt = { resolver: yupResolver(formSchema) }
-
-  const { register, handleSubmit, formState } = useForm(validationOpt)
-
-  const { errors } = formState
-
-  function onFormSubmit(data) { 
-    let url = `https://gm4-server.herokuapp.com/api/admin/change/password`;
-    let options = {
-      method: 'PUT',
-      url: url,
-      headers: {
-        'Content-Type': "Application/json",
-        'Authorization': "Bearer " + localStorage.getItem("token")
-      },
-      data: {
-        email: data.email && data.email,
-        password: data.password && data.password,
-        newpassword: data.passwordConfirm && data.passwordConfirm
+      let url = `https://gm4-server.herokuapp.com/api/admin/change/password`;
+      let options = {
+        method: 'PUT',
+        url: url,
+        headers: {
+          'Content-Type': "Application/json",
+          'Authorization': "Bearer " + localStorage.getItem("token")
+        },
+        data: {
+          email: formValue.email,
+          password: formValue.cPassword,
+          newpassword: formValue.newPassword
+        }
       }
+      try {
+        axios(options).then((res) => {
+          console.log(res)
+          handleOpen()
+          setFormValue({
+            cPassword: "",
+            newPassword: ""
+          })
+          return false
+        }).catch((err) => {
+          alert(err.response.data.error)
+          setFormValue({
+            cPassword: ""
+          })
+        })
+      } catch (error) {
+        alert(error.response.data.error);
+      }
+    } else {
+      alert("Please enter correct values")
+      // console.log(errField)
     }
-    try {
-      axios(options).then((res) => {
-        console.log(res);
-      })
-
-
-    } catch (error) {
-      alert(error.response.data.error);
-    }
-
-    // handleOpen();
-    return false
   }
 
-  const [email, setEmail] = useState("");
+
+  const validForm = () => {
+    var formIsValid = true
+    const validEmailRegex = RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+    setErrField({
+      emailErr: "",
+      passwordErr: "",
+      newPasswordErr: ""
+    })
+
+    if (formValue.email === "") {
+      formIsValid = false;
+      setErrField(pre => ({
+        ...pre, emailErr: "Please enter email **"
+      }))
+    }
+
+    if (formValue !== "" && !validEmailRegex.test(formValue.email)) {
+      formIsValid = false;
+      setErrField(pre => ({
+        ...pre, emailErr: "Please enter Email in correct format **"
+      }))
+    }
+    if (formValue.cPassword == "") {
+      formIsValid = false;
+      setErrField(pre => ({
+        ...pre, passwordErr: "Please enter current password **"
+      }))
+    }
+
+
+    if (formValue.newPassword == "") {
+      formIsValid = false;
+      setErrField(pre => ({
+        ...pre, newPasswordErr: "Please enter new password **"
+      }))
+    }
+
+    if (formValue.newPassword.length < 8) {
+      formIsValid = false;
+      setErrField(pre => ({
+        ...pre, newPasswordErr: "minimum 8 charecters **"
+      }))
+    }
+
+    return formIsValid;
+  }
 
   const getUserInfo = async () => {
     const adminId = localStorage.getItem('adminId');
@@ -101,7 +157,9 @@ const ChangePassword = () => {
     }
     try {
       const response = await axios(options);
-      setEmail(response.data.email)
+      setFormValue({
+        email: response.data.email
+      })
 
     } catch (error) {
       alert(error.response.data.error);
@@ -111,7 +169,6 @@ const ChangePassword = () => {
   useEffect(() => {
     getUserInfo();
   }, [])
-
 
   return (
     <div className='AdminChangepass'  >
@@ -126,56 +183,60 @@ const ChangePassword = () => {
       {/*admin change password form */}
 
       <div >
-        <form className='AdminChangepassForm' onSubmit={handleSubmit(onFormSubmit)}>
+        <form className='AdminChangepassForm' onSubmit={onFormSubmit}>
           <fieldset class="uk-fieldset">
 
-
             <div class="uk-margin">
-              <input class="uk-input {`form-control ${
-                  errors.password ? 'is-invalid' : ''}`} "  name='email' value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="Enter Email" required=""
-                {...register('email')} />
-            </div>
-
-            <div className="invalid-feedback" >
-              {errors.oldpass?.message}
-
-            </div>
-
-            <div class="uk-margin">
-
-              <input class="uk-input  {`form-control ${
-                  errors.password ? 'is-invalid' : ''}`} "
-                id='password' name="password" type="password" placeholder="New Password" required=""
-
-                {...register('password')}
-
+              <input
+                class="uk-input"
+                name='email'
+                value={formValue.email}
+                onChange={handleChange}
+                type="email"
+                placeholder="Enter Email"
+                required=""
               />
-
             </div>
-
+            {/* validation error */}
             <div className="invalid-feedback" >
-              {errors.password?.message}
-
+              {errField.emailErr.length > 0 && errField.emailErr}
             </div>
 
             <div class="uk-margin">
-              <input class="uk-input  {`form-control ${
-                  errors.passwordConfirm ? 'is-invalid' : ''
-                }`} " id='passwordConfirm' name="passwordConfirm" type="password" placeholder="Confirm password" required=""
-                {...register('passwordConfirm')}
-
+              <input
+                class="uk-input"
+                name="cPassword"
+                value={formValue.cPassword}
+                onChange={handleChange}
+                type="password"
+                placeholder="Current Password"
+                required=""
               />
+            </div>
+            {/* fromvalidation */}
+            <div className="invalid-feedback" >
+              {errField.passwordErr.length > 0 && errField.passwordErr}
+            </div>
 
-
+            <div class="uk-margin">
+              <input
+                class="uk-input"
+                name="newPassword"
+                value={formValue.newPassword}
+                onChange={handleChange}
+                type="password"
+                placeholder="New password"
+                required=""
+              />
+              {/* fromvalidation */}
               <div className="invalid-feedback" >
-                {errors.passwordConfirm?.message}
-
+                {errField.newPasswordErr.length > 0 && errField.newPasswordErr}
               </div>
 
             </div>
 
             <div>
-              <button class="AdminChangepassButton" onClick={onFormSubmit}>Save</button>
+              <button class="AdminChangepassButton">Save</button>
             </div>
           </fieldset>
 

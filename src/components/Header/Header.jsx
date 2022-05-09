@@ -22,6 +22,8 @@ import SmsOutlinedIcon from '@material-ui/icons/SmsOutlined';
 import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
 import gm4logo from '../../assets/images/logo.png';
 
+import axios from 'axios';
+
 const Header = () => {
   const navigate = useNavigate();
 
@@ -44,14 +46,26 @@ const Header = () => {
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
-  const handleMenuClose = (action) => {
+  const handleMenuClose = async (action) => {
     setAnchorEl(null);
     handleMobileMenuClose();
     if (action === 'profile') {
       navigate('/admin/profile')
     }
     else if (action === 'logout') {
-      navigate('/admin/login')
+      try {
+        let url = 'https://gm4-server.herokuapp.com/api/admin/signout';
+        const options = {
+          method: "GET",
+          url: url,
+        }
+        const response = await axios(options);
+        localStorage.clear();
+        alert(response.data.message);
+        navigate('/admin/login')
+      } catch (error) {
+        alert(error.response.data.error)
+      }
     }
   };
   const handleMobileMenuOpen = (event) => {
@@ -247,7 +261,7 @@ const Header = () => {
               component="div"
               sx={{ display: { sm: 'block' } }}
             >
-              <h2 onClick={() => navigate('/')} className='headerlogoorg'> <img  src={gm4logo} alt=""/> </h2>
+              <h2 onClick={() => navigate('/')} className='headerlogoorg'> <img src={gm4logo} alt="" /> </h2>
             </Typography>
             <Search id="header-searchbarorg">
               <SearchIconWrapper id='admin_header_serchIcon'>

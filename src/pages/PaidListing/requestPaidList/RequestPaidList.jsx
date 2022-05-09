@@ -1,11 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './RequestPaidList.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import Header from '../../../components/Header/Header'
 import Footer from '../../../components/Footer/Footer'
 
 const RequestPaidList = () => {
+  const [requstList, setRequstList] = useState([])
+  const adminId = localStorage.getItem('adminId');
+  //get All Requst List
+  const getAllRequstList = async () => {
+    let url = `https://gm4-server.herokuapp.com/api/admin/view/pending/paidlist/${adminId}`
+    const options = {
+      method: "GET",
+      url: url,
+      headers: {
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      }
+    }
+    try {
+      const response = await axios(options);
+      setRequstList(response.data.ads)
+    } catch (error) {
+      console.log(error.response.data)
+    }
+
+  }
+  useEffect(() => {
+    getAllRequstList();
+  }, [])
+  console.log(requstList)
   return (
     <div className='reqPaidlist-mainwrapper'>
       <Header />
@@ -28,25 +53,22 @@ const RequestPaidList = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>ORG1</td>
-              <td>10-02-2022</td>
-              {/* link to request details page*/}
-              <td><Link to={'/admin/request/details'}><button>View Details</button></Link></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>ORG2</td>
-              <td>11-02-2022</td>
-              <td><Link to={'/admin/request/details'}><button>View Details</button></Link></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>ORG3</td>
-              <td>12-02-2022</td>
-              <td><Link to={'/admin/request/details'}><button>View Details</button></Link></td>
-            </tr>
+            {
+              requstList && requstList.map((data) => {
+                let date = new Date(data.createdAt);
+                let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+                return (
+                  <tr key={data._id}>
+                    <td>1</td>
+                    <td>{data.organiserName}</td>
+                    <td>{dateMDY}</td>
+                    {/* link to request details page*/}
+                    <td><Link to={`/admin/request/details/${data._id}`}><button>View Details</button></Link></td>
+                  </tr>
+                )
+              })
+            }
+
           </tbody>
         </table>
       </div>

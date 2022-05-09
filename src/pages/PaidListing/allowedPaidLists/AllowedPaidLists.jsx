@@ -1,11 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './AllowedPaidLists.css'
 
 import Header from '../../../components/Header/Header'
 import Footer from '../../../components/Footer/Footer'
+import axios from 'axios'
 
 const AllowedPaidLists = () => {
-  
+  const [allAllowedList, setAllAllowedList] = useState([])
+
+  //get Allowed paid List
+  const adminId = localStorage.getItem('adminId');
+  const getAllAllowed = async () => {
+    let url = `https://gm4-server.herokuapp.com/api/admin/view/approved/paidlist/${adminId}`
+    const options = {
+      method: "GET",
+      url: url,
+      headers: {
+        'Authorization': "Bearer " + localStorage.getItem("token")
+      }
+    }
+    try {
+      const response = await axios(options)
+      setAllAllowedList(response.data.ads)
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  useEffect(() => {
+    getAllAllowed();
+  }, [])
+
+
   return (
     <div className='allowedPaidlist_main-wrapper'>
       <Header />
@@ -28,24 +54,21 @@ const AllowedPaidLists = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>ORG1</td>
-              <td>10-02-2022</td>
-              <td><button>YES</button></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>ORG2</td>
-              <td>11-02-2022</td>
-              <td><button>YES</button></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>ORG3</td>
-              <td>12-02-2022</td>
-              <td><button>YES</button></td>
-            </tr>
+            {
+              allAllowedList && allAllowedList.map((data) => {
+                let date = new Date(data.createdAt);
+                let dateMDY = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+                return (
+                  <tr key={data._id}>
+                    <td>1</td>
+                    <td>{data.organiserName}</td>
+                    <td>{dateMDY}</td>
+                    <td><button>YES</button></td>
+                  </tr>
+                )
+              })
+            }
+
           </tbody>
         </table>
       </div>

@@ -1,10 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './UserTournaments.css'
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 
 const UserTournaments = () => {
+    const [tournemets, setTournemets] = useState([])
+
+    const { id } = useParams();
+    const adminId = localStorage.getItem("adminId")
+
+    //getAllTournements
+    const getAllTournements = async () => {
+        let url = `https://gm4-server.herokuapp.com/api/admin/count/booked/tournaments/${id}/${adminId}`;
+        const options = {
+            method: "GET",
+            url: url,
+            headers: {
+                'Content-Type': "Application/json",
+                'Authorization': "Bearer " + localStorage.getItem("token")
+            },
+        }
+        try {
+            const response = await axios(options);
+            setTournemets(response.data)
+        } catch (error) {
+            alert(error.response.data.error)
+        }
+    }
+
+    useEffect(() => {
+        getAllTournements();
+    }, [tournemets])
+
     return (
         <div>
             <Header />
@@ -26,36 +56,25 @@ const UserTournaments = () => {
                     {/* end table header */}
 
                     {/* table data */}
-                    <tr>
-                        <td>1</td>
-                        <td>10-02-2022</td>
-                        <td>Dreamhack </td>
-                        <td>Eleague</td>
-                        <td>10-02-2022 & 10:00</td>
-                    </tr>
-                    {/* table data */}
-                    <tr>
-                        <td>2</td>
-                        <td>10-02-2022</td>
-                        <td>Dreamhack </td>
-                        <td>Eleague</td>
-                        <td>10-02-2022 & 10:00</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>10-02-2022</td>
-                        <td>Dreamhack </td>
-                        <td>Eleague</td>
-                        <td>10-02-2022 & 10:00</td>
-                    </tr>
+                    {
+                        tournemets.length !== 0 ? (
+                            tournemets && tournemets.map((data, key) => {
+                                return (
+                                    <tr key={key}>
+                                        <td>1</td>
+                                        <td>10-02-2022</td>
+                                        <td>Dreamhack </td>
+                                        <td>Eleague</td>
+                                        <td>10-02-2022 & 10:00</td>
+                                    </tr>
+                                )
+                            })
+                        ) : <p style={{ padding: "10px", color: '#111', fontWeight: '600', display: "flex", position: "absolute", left: "40%", }}>No Booked Tournemets!</p>
+                    }
 
-                    <tr>
-                        <td>4</td>
-                        <td>10-02-2022</td>
-                        <td>Dreamhack </td>
-                        <td>Eleague</td>
-                        <td>10-02-2022 & 10:00</td>
-                    </tr>
+                    {/* table data */}
+
+
 
 
                 </table>

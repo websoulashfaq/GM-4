@@ -23,7 +23,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BiGroup } from 'react-icons/bi'
 import { BiMessageSquareDetail, BiSitemap } from 'react-icons/bi'
 
@@ -36,6 +36,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Home = () => {
+  const navigate = useNavigate();
+
   const [totalUser, setTotalUser] = useState(null)
   const [totalOrgaizer, setTotalOrganizer] = useState(null)
   const [totalPaidlist, setTotalPaidlist] = useState(null)
@@ -102,9 +104,16 @@ const Home = () => {
 
 
   useEffect(() => {
-    getTotalUsersCound();
-    getAllApprovedlistCount();
-    getOrganizersCount();
+    const admin = localStorage.getItem("adminId");
+    if (admin) {
+      getTotalUsersCound();
+      getAllApprovedlistCount();
+      getOrganizersCount();
+    }else{
+      navigate('/admin/login');
+    }
+
+
   }, [])
 
   // Sample chart data
